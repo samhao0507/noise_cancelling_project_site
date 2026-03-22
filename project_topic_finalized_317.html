@@ -64,6 +64,12 @@
 	<img src="inverted_waveform.png", alt="Inverted Waveform">
 <p><strong>TASK #4: It may be helpful to explore deep learning for more complicated noise removal (e.g., UNet for human speech isolation). Provide at least two references and summarize them in a paragraph. These can include the examples you included in your brainstorming.</strong><p>
 <p>From what we researched, CNN based methods provide a practical, easy-to-implement approach for learning patterns directly from spectrograms to denoise audio. For instance, "A fully convolutional neural network for speech enhancement" presents a simple CNN that takes noisy spectrograms as input and predicts clearer outputs, demonstrating that even relatively simple architectures can significantly improve speech quality. Another widely used method is introduced in "Speech denoising with deep feature losses", which combines convolutional networks with perceptual loss functions to generate more natural sound effects. Viewing through previous projects on audio denoising, we came across the project “Deconstructing Music", which used U-Net to isolate different instruments and voice parts. This inspired us to research U-Net for our project. The paper “Speech Denoising in the waveform domain with self attention” provides a good starting point for us. It uses a U-Net, Self-attention, and hybrid loss and achieves better performance than waveform SOTA. We can try to use this model on instrumental audio recordings instead of speech recordings.
+<p> Here are the references to our write-up for task 4:<p>
+<p> U-Net, Self-attention, and hybrid loss and achieves better performance than waveform SOTA. We can try to use this model on instrumental audio recordings instead of speech recordings.<p> 
+Ref: Park, S. R., & Lee, J. (2016, September 22). A fully convolutional neural network for speech enhancement. arXiv.org. https://arxiv.org/abs/1609.07132<p> 
+Germain, F. G., Chen, Q., & Koltun, V. (2018, September 14). Speech denoising with deep feature losses. arXiv.org. https://arxiv.org/abs/1806.10522<p> 
+Kong, Z., Ping, W., Dantrey, A., & Catanzaro, B. (2022). Speech denoising in the waveform domain with self-attention. arXiv. https://doi.org/10.48550/arXiv.2202.07790<p>
+Kerkmax A., Knapp G., Lee J., Garcia J. U-Net Architecture. https://joannale6.wixsite.com/eecs351project/u-net-architecture
 </main>
 
   <footer class="site-footer">
