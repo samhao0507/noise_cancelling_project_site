@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Progress · Noise Cancellation Final Project</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-nav-page="progress">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="top">
+    <div class="header-inner">
+      <a href="index.html" class="brand brand-link">EECS 351: Intro to Digital Signal Processing</a>
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary">
+        <ul class="nav-list">
+          <li><a href="introduction.html" data-nav="introduction">Introduction</a></li>
+          <li><a href="data.html" data-nav="data">Data</a></li>
+          <li><a href="method.html" data-nav="method">Method</a></li>
+          <li><a href="result.html" data-nav="result">Result</a></li>
+          <li><a href="progress.html" data-nav="progress">Progress</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="progress-track" aria-hidden="true">
+      <span class="progress-track-fill" id="scroll-progress"></span>
+    </div>
+  </header>
+
+  <main id="main" class="page-main">
+    <div class="content-wrap content-wrap--page">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        <span>Progress</span>
+      </nav>
+      <section class="panel panel--progress">
+        <div class="panel-inner panel-inner--wide">
+          <span class="panel-index">05</span>
+          <h1 class="panel-title">Progress</h1>
+          <p class="panel-lead">Track how the idea evolved and what milestones you have hit.</p>
+
+          <div class="subsection-tabs" role="tablist" aria-label="Progress subsections">
+            <button type="button" class="tab-btn is-active" role="tab" id="tab-idea" aria-selected="true" aria-controls="panel-idea" data-tab="idea">Idea finalization</button>
+            <button type="button" class="tab-btn" role="tab" id="tab-report" aria-selected="false" aria-controls="panel-report" data-tab="report">Progress report</button>
+          </div>
+
+          <div class="tab-panels">
+            <div class="tab-panel is-visible" role="tabpanel" id="panel-idea" aria-labelledby="tab-idea" data-panel="idea">
+              <h2 class="sr-only">Idea finalization</h2>
+              <p>Document how you narrowed the topic, chose baselines, and aligned with course constraints. Bullet milestones or a short timeline works well.</p>
+              <ul class="timeline">
+                <li class="timeline-item">
+                  <span class="timeline-dot"></span>
+                  <div class="timeline-copy">
+                    <strong>Week 1–2</strong>
+                    <span>Brainstorming and literature skim; initial hypothesis.</span>
+                  </div>
+                </li>
+                <li class="timeline-item">
+                  <span class="timeline-dot"></span>
+                  <div class="timeline-copy">
+                    <strong>Week 3</strong>
+                    <span>Final scope and success criteria agreed with the team.</span>
+                  </div>
+                </li>
+                <li class="timeline-item">
+                  <span class="timeline-dot"></span>
+                  <div class="timeline-copy">
+                    <strong>Now</strong>
+                    <span>Update this row as your plan stabilizes.</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div class="tab-panel" role="tabpanel" id="panel-report" aria-labelledby="tab-report" hidden data-panel="report">
+              <h2 class="sr-only">Progress report</h2>
+              <p>Summarize what is done, what is in progress, and known risks. This subsection can mirror your weekly or milestone updates.</p>
+              <div class="report-grid">
+                <article class="report-card">
+                  <h3>Completed</h3>
+                  <p>Data collection, environment setup, first baseline run…</p>
+                </article>
+                <article class="report-card">
+                  <h3>In progress</h3>
+                  <p>Tuning parameters, ablations, report writing…</p>
+                </article>
+                <article class="report-card">
+                  <h3>Blockers</h3>
+                  <p>Optional: note dependencies or open questions.</p>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>EECS 351: Intro to Digital Signal Processing — Final Project · Replace with team names and term</p>
+    <button type="button" class="to-top" id="to-top" aria-label="Back to top">↑</button>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

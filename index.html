@@ -3,29 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EECS 351 Final Project</title>
+  <title>Home · Noise Cancellation Final Project</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
-<body>
+<body data-nav-page="home">
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header" id="top">
     <div class="header-inner">
-      <p class="brand">EECS 351</p>
+      <a href="index.html" class="brand brand-link">EECS 351: Intro to Digital Signal Processing</a>
       <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
         <span class="nav-toggle-bar"></span>
         <span class="nav-toggle-bar"></span>
       </button>
       <nav class="site-nav" id="site-nav" aria-label="Primary">
         <ul class="nav-list">
-          <li><a href="#introduction" data-section="introduction">Introduction</a></li>
-          <li><a href="#data" data-section="data">Data</a></li>
-          <li><a href="#method" data-section="method">Method</a></li>
-          <li><a href="#result" data-section="result">Result</a></li>
-          <li><a href="#progress" data-section="progress">Progress</a></li>
+          <li><a href="introduction.html" data-nav="introduction">Introduction</a></li>
+          <li><a href="data.html" data-nav="data">Data</a></li>
+          <li><a href="method.html" data-nav="method">Method</a></li>
+          <li><a href="result.html" data-nav="result">Result</a></li>
+          <li><a href="progress.html" data-nav="progress">Progress</a></li>
         </ul>
       </nav>
     </div>
@@ -40,143 +40,51 @@
       <div class="hero-content">
         <p class="hero-label">University of Michigan · Winter 2026</p>
         <h1 id="hero-title" class="hero-title">Noise Cancellation<br /><span class="hero-accent">Final Project</span></h1>
-        <p class="hero-lead">An interactive project site for our EECS 351 work—explore our data, methods, results, and ongoing progress below.</p>
-        <a class="hero-cta" href="#introduction">Begin reading</a>
+        <p class="hero-lead">An interactive project site for our EECS 351 work—open any section below or use the navigation to read each part on its own page.</p>
+        <a class="hero-cta" href="introduction.html">Begin with Introduction</a>
       </div>
     </section>
 
     <div class="content-wrap">
-      <section class="panel" id="introduction" data-section-id="introduction">
-        <div class="panel-inner">
-          <span class="panel-index">01</span>
-          <h2 class="panel-title">Introduction</h2>
-          <p class="panel-lead">Describe the problem, motivation, and goals of your project in a few clear sentences.</p>
-          <div class="panel-body">
-            <p>Replace this paragraph with your project overview: what noise or signal problem you address, why it matters, and what success looks like for your team.</p>
-            <p>You can add equations, diagrams, or links to papers as you refine the page—this layout stays readable on phones and desktops.</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="panel panel--alt" id="data" data-section-id="data">
-        <div class="panel-inner">
-          <span class="panel-index">02</span>
-          <h2 class="panel-title">Data</h2>
-          <p class="panel-lead">Summarize datasets, recording conditions, sampling rates, and any preprocessing.</p>
-          <div class="panel-body">
-            <ul class="info-list">
-              <li><strong>Source</strong> — Where recordings or synthetic data come from.</li>
-              <li><strong>Format</strong> — Channels, duration, file types.</li>
-              <li><strong>Splits</strong> — Train / validation / test if applicable.</li>
-            </ul>
-            <p>Add figures or embedded audio players here when you have assets.</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="panel" id="method" data-section-id="method">
-        <div class="panel-inner">
-          <span class="panel-index">03</span>
-          <h2 class="panel-title">Method</h2>
-          <p class="panel-lead">Outline your pipeline: feature extraction, models, adaptive filters, or learning-based approaches.</p>
-          <div class="panel-body">
-            <p>Walk through the algorithm or architecture step by step. A numbered list or simple diagram often reads well here.</p>
-            <ol class="step-list">
-              <li>Step one of your processing chain.</li>
-              <li>Step two—parameters and design choices.</li>
-              <li>Step three—how you evaluate quality.</li>
-            </ol>
-          </div>
-        </div>
-      </section>
-
-      <section class="panel panel--alt" id="result" data-section-id="result">
-        <div class="panel-inner">
-          <span class="panel-index">04</span>
-          <h2 class="panel-title">Result</h2>
-          <p class="panel-lead">Present quantitative metrics, spectrograms, or listening-test outcomes.</p>
-          <div class="panel-body">
-            <p>Tables, plots, and before/after audio embeds fit naturally in this section. Use your course’s reporting style as a guide.</p>
-            <div class="stat-row" role="group" aria-label="Example metrics">
-              <div class="stat-card">
-                <span class="stat-value" data-count="0" data-target="12">0</span>
-                <span class="stat-label">dB improvement (example)</span>
-              </div>
-              <div class="stat-card">
-                <span class="stat-value stat-value--plain">48 kHz</span>
-                <span class="stat-label">Sample rate (example)</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="panel panel--progress" id="progress" data-section-id="progress">
-        <div class="panel-inner">
-          <span class="panel-index">05</span>
-          <h2 class="panel-title">Progress</h2>
-          <p class="panel-lead">Track how the idea evolved and what milestones you have hit.</p>
-
-          <div class="subsection-tabs" role="tablist" aria-label="Progress subsections">
-            <button type="button" class="tab-btn is-active" role="tab" id="tab-idea" aria-selected="true" aria-controls="panel-idea" data-tab="idea">Idea finalization</button>
-            <button type="button" class="tab-btn" role="tab" id="tab-report" aria-selected="false" aria-controls="panel-report" data-tab="report">Progress report</button>
-          </div>
-
-          <div class="tab-panels">
-            <div class="tab-panel is-visible" role="tabpanel" id="panel-idea" aria-labelledby="tab-idea" data-panel="idea">
-              <h3 class="sr-only">Idea finalization</h3>
-              <p>Document how you narrowed the topic, chose baselines, and aligned with course constraints. Bullet milestones or a short timeline works well.</p>
-              <ul class="timeline">
-                <li class="timeline-item">
-                  <span class="timeline-dot"></span>
-                  <div class="timeline-copy">
-                    <strong>Week 1–2</strong>
-                    <span>Brainstorming and literature skim; initial hypothesis.</span>
-                  </div>
-                </li>
-                <li class="timeline-item">
-                  <span class="timeline-dot"></span>
-                  <div class="timeline-copy">
-                    <strong>Week 3</strong>
-                    <span>Final scope and success criteria agreed with the team.</span>
-                  </div>
-                </li>
-                <li class="timeline-item">
-                  <span class="timeline-dot"></span>
-                  <div class="timeline-copy">
-                    <strong>Now</strong>
-                    <span>Update this row as your plan stabilizes.</span>
-                  </div>
-                </li>
-              </ul>
-            </div>
-
-            <div class="tab-panel" role="tabpanel" id="panel-report" aria-labelledby="tab-report" hidden data-panel="report">
-              <h3 class="sr-only">Progress report</h3>
-              <p>Summarize what is done, what is in progress, and known risks. This subsection can mirror your weekly or milestone updates.</p>
-              <div class="report-grid">
-                <article class="report-card">
-                  <h4>Completed</h4>
-                  <p>Data collection, environment setup, first baseline run…</p>
-                </article>
-                <article class="report-card">
-                  <h4>In progress</h4>
-                  <p>Tuning parameters, ablations, report writing…</p>
-                </article>
-                <article class="report-card">
-                  <h4>Blockers</h4>
-                  <p>Optional: note dependencies or open questions.</p>
-                </article>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <h2 class="section-grid-heading">Project sections</h2>
+      <p class="section-grid-lead">Each card opens the full write-up for that part of the report.</p>
+      <div class="section-grid" role="list">
+        <a href="introduction.html" class="section-card section-card--01" role="listitem">
+          <span class="section-card-index">01</span>
+          <span class="section-card-title">Introduction</span>
+          <span class="section-card-hint">Problem, motivation, goals</span>
+          <span class="section-card-arrow" aria-hidden="true">→</span>
+        </a>
+        <a href="data.html" class="section-card section-card--02" role="listitem">
+          <span class="section-card-index">02</span>
+          <span class="section-card-title">Data</span>
+          <span class="section-card-hint">Sources, format, splits</span>
+          <span class="section-card-arrow" aria-hidden="true">→</span>
+        </a>
+        <a href="method.html" class="section-card section-card--03" role="listitem">
+          <span class="section-card-index">03</span>
+          <span class="section-card-title">Method</span>
+          <span class="section-card-hint">Pipeline and design choices</span>
+          <span class="section-card-arrow" aria-hidden="true">→</span>
+        </a>
+        <a href="result.html" class="section-card section-card--04" role="listitem">
+          <span class="section-card-index">04</span>
+          <span class="section-card-title">Result</span>
+          <span class="section-card-hint">Metrics, plots, listening tests</span>
+          <span class="section-card-arrow" aria-hidden="true">→</span>
+        </a>
+        <a href="progress.html" class="section-card section-card--05 section-card--wide" role="listitem">
+          <span class="section-card-index">05</span>
+          <span class="section-card-title">Progress</span>
+          <span class="section-card-hint">Idea finalization &amp; progress report</span>
+          <span class="section-card-arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
     </div>
   </main>
 
   <footer class="site-footer">
-    <p>EECS 351 Final Project · Replace with team names and term</p>
+    <p>EECS 351: Intro to Digital Signal Processing — Final Project · Replace with team names and term</p>
     <button type="button" class="to-top" id="to-top" aria-label="Back to top">↑</button>
   </footer>
 

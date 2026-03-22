@@ -4,7 +4,8 @@
   const header = document.querySelector(".site-header");
   const nav = document.getElementById("site-nav");
   const navToggle = document.querySelector(".nav-toggle");
-  const navLinks = document.querySelectorAll(".site-nav a[href^='#']");
+  const navLinks = document.querySelectorAll(".site-nav a[data-nav]");
+  const navPage = document.body.getAttribute("data-nav-page");
   const sections = document.querySelectorAll("[data-section-id]");
   const scrollProgress = document.getElementById("scroll-progress");
   const toTop = document.getElementById("to-top");
@@ -27,6 +28,14 @@
   }
 
   function updateActiveNav() {
+    if (navPage) {
+      navLinks.forEach(function (link) {
+        const match = navPage !== "home" && link.getAttribute("data-nav") === navPage;
+        link.classList.toggle("is-active", match);
+      });
+      return;
+    }
+
     const fromTop = window.scrollY + (header ? header.offsetHeight : 0) + 40;
     let current = "";
 
@@ -38,7 +47,7 @@
     });
 
     navLinks.forEach(function (link) {
-      const id = link.getAttribute("data-section");
+      const id = link.getAttribute("data-nav");
       link.classList.toggle("is-active", id === current);
     });
   }
@@ -57,7 +66,7 @@
       toggleMobileNav();
     });
 
-    navLinks.forEach(function (link) {
+    nav.querySelectorAll("a").forEach(function (link) {
       link.addEventListener("click", function () {
         if (window.matchMedia("(max-width: 768px)").matches) {
           toggleMobileNav(false);
@@ -83,6 +92,7 @@
   }
 
   window.addEventListener("scroll", onScroll, { passive: true });
+  updateActiveNav();
   onScroll();
 
   if (toTop) {
@@ -169,7 +179,7 @@
       { threshold: 0.4 }
     );
 
-    const resultPanel = document.getElementById("result");
-    if (resultPanel) statsIo.observe(resultPanel);
+    const resultSection = document.getElementById("result");
+    if (resultSection) statsIo.observe(resultSection);
   }
 })();
