@@ -1,0 +1,69 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data · Noise Cancellation Final Project</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-nav-page="data">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="top">
+    <div class="header-inner">
+      <a href="index.html" class="brand brand-link">EECS 351: Intro to Digital Signal Processing</a>
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary">
+        <ul class="nav-list">
+          <li><a href="introduction.html" data-nav="introduction">Introduction</a></li>
+          <li><a href="data.html" data-nav="data">Data</a></li>
+          <li><a href="method.html" data-nav="method">Method</a></li>
+          <li><a href="result.html" data-nav="result">Result</a></li>
+          <li><a href="progress.html" data-nav="progress">Progress</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="progress-track" aria-hidden="true">
+      <span class="progress-track-fill" id="scroll-progress"></span>
+    </div>
+  </header>
+
+  <main id="main" class="page-main">
+    <div class="content-wrap content-wrap--page">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        <span>Data</span>
+      </nav>
+      <section class="panel panel--alt">
+        <div class="panel-inner panel-inner--wide">
+          <span class="panel-index">02</span>
+          <h1 class="panel-title">Data</h1>
+          <p class="panel-lead">Here are the tasks that our group recieved for the Project Topic Finalized Assignment: </p>
+          <div class="panel-body"> 
+Take a look at these websites from previous years that focused on noise cancellation: https://twliu9.wixsite.com/eecs351w22-fp-g16/my-work, and https://sites.google.com/umich.edu/anc/home?pli=1&authuser=1. Some groups have added some  restrictions on the sets of signals they try to cancel. For example, the signals could be regular/periodic sounds like a hammer sound at a regular rate, beeping of a smoke detector, etc.
+
+Collect a part of what would be your dataset. I think for this to be interesting, there must be some noises you are trying to eliminate and some sounds you want to keep. Try to somewhat narrowly define what you are trying to do – eliminate noise from a driving car or airplane? Eliminate (more unpredictable) noises on a zoom call? Depending on what you choose, your data could be a set of recordings of voices or songs with some specific common surrounding noises (phone ringing, another person talking in the distance, coffee machine noises, whatever you want to try eliminating)
+            <ul class="info-list">
+            </ul>
+            <p>Add figures or embedded audio players here when you have assets.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>EECS 351: Intro to Digital Signal Processing — Final Project</p>
+    <button type="button" class="to-top" id="to-top" aria-label="Back to top">↑</button>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
