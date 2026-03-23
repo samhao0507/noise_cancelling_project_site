@@ -51,6 +51,39 @@
 <strong>TASK #1: Take a look at these websites from previous years that focused on noise cancellation: https://twliu9.wixsite.com/eecs351w22-fp-g16/my-work, and https://sites.google.com/umich.edu/anc/home?pli=1&authuser=1. Some groups have added some  restrictions on the sets of signals they try to cancel. For example, the signals could be regular/periodic sounds like a hammer sound at a regular rate, beeping of a smoke detector, etc.<p>
 <p>Collect a part of what would be your dataset. I think for this to be interesting, there must be some noises you are trying to eliminate and some sounds you want to keep. Try to somewhat narrowly define what you are trying to do – eliminate noise from a driving car or airplane? Eliminate (more unpredictable) noises on a zoom call? Depending on what you choose, your data could be a set of recordings of voices or songs with some specific common surrounding noises (phone ringing, another person talking in the distance, coffee machine noises, whatever you want to try eliminating),</strong><p>
 <p>Our group is planning on working with multiple instruments, including bells, vinyl turntables, pianos, and the Chinese Guzheng. We will focus on ambient noise that is common in our life.  We will first explore the air conditioner noise alongside the bell sounds, and then extend it to other instruments. Later, we will try out other kinds of noises, for example, the dust and scratches hearable in vinyl turntables. In the beginning, we will explore filtering and inverting waveforms on the recordings. Then, we will use Deep Learning algorithms such as CleanUNet to do deeper filtering and better sound restoration.<p>
+<p>Our collected data:<p>
+<div class="audio-dataset">
+  <h3>Samples of Collected Data:</h3>
+  
+  <div class="audio-item" style="margin-bottom: 15px;">
+    <p><strong>1. Bell with AC Noise:</strong></p>
+    <audio controls>
+      <source src="EECS351_bells4.m4a" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+  </div>
+
+  <div class="audio-item" style="margin-bottom: 15px;">
+    <p><strong>2. Piano (Ambient Environment):</strong></p>
+    <audio controls>
+      <source src="EECS351_Piano_4_noisy.m4a" type="audio/mpeg">
+    </audio>
+  </div>
+
+  <div class="audio-item" style="margin-bottom: 15px;">
+    <p><strong>3. Vinyl Record (Scratches & Dust):</strong></p>
+    <audio controls>
+      <source src="this is how you fall in love (2).aif" type="audio/mpeg">
+    </audio>
+  </div>
+
+  <div class="audio-item" style="margin-bottom: 15px;">
+    <p><strong>4. Guzheng (People talking in the background):</strong></p>
+    <audio controls>
+      <source src="Guzheng1.m4a" type="audio/mpeg">
+    </audio>
+  </div>
+</div>
 <p><strong>TASK #2: Use some simple filtering to eliminate noise. When you do, how clear is the signal you want to keep? What other features (other than frequency) distinguish the other “noise” sounds from the signal you want to keep? Describe how you might quantify those other features for an algorithm.</strong><p>
 <p>Ronald used a highpass equiripple filter, designed in Matlab’s filterDesigner, to eliminate the sound of the air conditioner that was present in the audio file of the bells. Here are some plots of one of the audio files.
 	<img src="recording_before_filtering.png", alt="Recording Before Filtering">
