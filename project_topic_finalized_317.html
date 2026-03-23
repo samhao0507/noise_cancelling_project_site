@@ -51,37 +51,6 @@
 <strong>TASK #1: Take a look at these websites from previous years that focused on noise cancellation: https://twliu9.wixsite.com/eecs351w22-fp-g16/my-work, and https://sites.google.com/umich.edu/anc/home?pli=1&authuser=1. Some groups have added some  restrictions on the sets of signals they try to cancel. For example, the signals could be regular/periodic sounds like a hammer sound at a regular rate, beeping of a smoke detector, etc.<p>
 <p>Collect a part of what would be your dataset. I think for this to be interesting, there must be some noises you are trying to eliminate and some sounds you want to keep. Try to somewhat narrowly define what you are trying to do – eliminate noise from a driving car or airplane? Eliminate (more unpredictable) noises on a zoom call? Depending on what you choose, your data could be a set of recordings of voices or songs with some specific common surrounding noises (phone ringing, another person talking in the distance, coffee machine noises, whatever you want to try eliminating),</strong><p>
 <p>Our group is planning on working with multiple instruments, including bells, vinyl turntables, pianos, and the Chinese Guzheng. We will focus on ambient noise that is common in our life.  We will first explore the air conditioner noise alongside the bell sounds, and then extend it to other instruments. Later, we will try out other kinds of noises, for example, the dust and scratches hearable in vinyl turntables. In the beginning, we will explore filtering and inverting waveforms on the recordings. Then, we will use Deep Learning algorithms such as CleanUNet to do deeper filtering and better sound restoration.<p>
-<div class="audio-dataset">
-  <h3>Samples of Collected Data:</h3>
-  <div class="audio-item" style="margin-bottom: 15px;">
-    <p>1. Bell (AC noise):</p>
-    <audio controls>
-      <source src="EECS351_bells4.m4a" type="audio/mpeg">
-      
-    </audio>
-  </div>
-
-  <div class="audio-item" style="margin-bottom: 15px;">
-    <p>2. Piano (Ambient Environment):</p>
-    <audio controls>
-      <source src="EECS351_Piano_4_noisy.m4a" type="audio/mpeg">
-    </audio>
-  </div>
-
-  <div class="audio-item" style="margin-bottom: 15px;">
-    <p>3. Vinyl Record (Scratches & Dust):</p>
-    <audio controls>
-      <source src="Vienna.wav" type="audio/mpeg">
-    </audio>
-  </div>
-
-  <div class="audio-item" style="margin-bottom: 15px;">
-    <p>4. Guzheng (People talking in the background):</p>
-    <audio controls>
-      <source src="Guzheng1.m4a" type="audio/mpeg">
-    </audio>
-  </div>
-</div>
 <p><strong>TASK #2: Use some simple filtering to eliminate noise. When you do, how clear is the signal you want to keep? What other features (other than frequency) distinguish the other “noise” sounds from the signal you want to keep? Describe how you might quantify those other features for an algorithm.</strong><p>
 <p>Ronald used a highpass equiripple filter, designed in Matlab’s filterDesigner, to eliminate the sound of the air conditioner that was present in the audio file of the bells. Here are some plots of one of the audio files.
 	<img src="recording_before_filtering.png", alt="Recording Before Filtering">
@@ -102,7 +71,8 @@
 <p>Ref: Park, S. R., & Lee, J. (2016, September 22). A fully convolutional neural network for speech enhancement. arXiv.org. https://arxiv.org/abs/1609.07132<p> 
 Germain, F. G., Chen, Q., & Koltun, V. (2018, September 14). Speech denoising with deep feature losses. arXiv.org. https://arxiv.org/abs/1806.10522<p> 
 Kong, Z., Ping, W., Dantrey, A., & Catanzaro, B. (2022). Speech denoising in the waveform domain with self-attention. arXiv. https://doi.org/10.48550/arXiv.2202.07790<p>
-Kerkmax A., Knapp G., Lee J., Garcia J. U-Net Architecture. https://joannale6.wixsite.com/eecs351project/u-net-architecture
+Kerkmax A., Knapp G., Lee J., Garcia J. U-Net Architecture. https://joannale6.wixsite.com/eecs351project/u-net-architecture<p>
+Kashyap, M. M., Tambwekar, A., Manohara, K., & Natarajan, S. (2021, August 30). Speech denoising without clean training data: A Noise2Noise approach. Interspeech 2021. https://doi.org/10.21437/Interspeech.2021-1130
 </main>
 
   <footer class="site-footer">
