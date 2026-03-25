@@ -21,7 +21,7 @@
       </button>
       <nav class="site-nav" id="site-nav" aria-label="Primary">
         <ul class="nav-list">
-          <li><a href="introduction.html" data-nav="introduction">Introduction</a></li>
+          <li><a href="introduction.html" data-nav="introduction">Intro</a></li>
           <li><a href="data.html" data-nav="data">Data</a></li>
           <li><a href="method.html" data-nav="method">Method</a></li>
           <li><a href="result.html" data-nav="result">Result</a></li>
@@ -45,41 +45,50 @@
       <section class="panel panel--progress">
         <div class="panel-inner panel-inner--wide">
           <!-- <span class="panel-index">05</span> -->
-          <h1 class="panel-title">Progress</h1>
-          <p class="panel-lead">Track how the idea evolved and what milestones you have hit.</p>
-
+          <h1 class="panel-title">Progress Report</h1>
+          <!-- <p class="panel-lead">Track how the idea evolved and what milestones you have hit.</p> -->
+          <p class="panel-lead">3/29</p>
           <div class="subsection-tabs" role="tablist" aria-label="Progress subsections">
-            <button type="button" class="tab-btn is-active" role="tab" id="tab-idea" aria-selected="true" aria-controls="panel-idea" data-tab="idea">Idea finalization</button>
-            <button type="button" class="tab-btn" role="tab" id="tab-report" aria-selected="false" aria-controls="panel-report" data-tab="report">Progress report</button>
+            <!-- <button type="button" class="tab-btn is-active" role="tab" id="tab-idea" aria-selected="true" aria-controls="panel-idea" data-tab="idea">Idea finalization</button> -->
+            <button type="button" class="tab-btn is-active" role="tab" id="tab-plan" aria-selected="true" aria-controls="panel-plan" data-tab="plan">Plan</button>
+            <button type="button" class="tab-btn" role="tab" id="tab-plots" aria-selected="false" aria-controls="panel-plots" data-tab="plots">Plots of data</button>
+            <button type="button" class="tab-btn" role="tab" id="tab-done" aria-selected="false" aria-controls="panel-done" data-tab="done">Work, Challenges, Learned</button>
+            <!-- <button type="button" class="tab-btn" role="tab" id="tab-learned" aria-selected="false" aria-controls="panel-learned" data-tab="learned">What we learned</button> -->
           </div>
 
           <div class="tab-panels">
-            <div class="tab-panel is-visible" role="tabpanel" id="panel-idea" aria-labelledby="tab-idea" data-panel="idea">
-              <h2 class="sr-only">Idea finalization</h2>
-              <p>Document how you narrowed the topic, chose baselines, and aligned with course constraints. Bullet milestones or a short timeline works well.</p>
+            <div class="tab-panel is-visible" role="tabpanel" id="panel-plan" aria-labelledby="tab-plan" data-panel="plan">
+              <h2 class="sr-only">Our plans</h2>
+              <p>In the following three weeks, we will:</p>
               <ul class="timeline">
                 <li class="timeline-item">
                   <span class="timeline-dot"></span>
                   <div class="timeline-copy">
-                    <strong>Week 1–2</strong>
-                    <span>Brainstorming and literature skim; initial hypothesis.</span>
+                    <strong>3/30-4/4</strong>
+                    <span>Add noise using the noising function to the clean data<br> build deep learning algorithm </span>
                   </div>
                 </li>
                 <li class="timeline-item">
                   <span class="timeline-dot"></span>
                   <div class="timeline-copy">
-                    <strong>Week 3</strong>
-                    <span>Final scope and success criteria agreed with the team.</span>
+                    <strong>4/5-4/18</strong>
+                    <span>Train by adding noise 1-by-1 on the clean data.</span>
                   </div>
                 </li>
                 <li class="timeline-item">
                   <span class="timeline-dot"></span>
                   <div class="timeline-copy">
-                    <strong>Now</strong>
-                    <span>Update this row as your plan stabilizes.</span>
+                    <strong>4/19-</strong>
+                    <span>Compare deep learning results to filtering with the recordings we made<br> Finalize on the website.</span>
                   </div>
                 </li>
               </ul>
+            </div>
+            
+            <div class="tab-panel" role="tabpanel" id="panel-plots" aria-labelledby="tab-plots" hidden data-panel="plots">
+              <h2 class="sr-only">New Plots</h2>
+              <p>Put the new plots.</p>
+              
             </div>
 
             <div class="tab-panel" role="tabpanel" id="panel-report" aria-labelledby="tab-report" hidden data-panel="report">
@@ -87,15 +96,15 @@
               <p>Summarize what is done, what is in progress, and known risks. This subsection can mirror your weekly or milestone updates.</p>
               <div class="report-grid">
                 <article class="report-card">
-                  <h3>Completed</h3>
+                  <h3>What we have done</h3>
                   <p>Data collection, environment setup, first baseline run…</p>
                 </article>
                 <article class="report-card">
-                  <h3>In progress</h3>
+                  <h3>Challenges</h3>
                   <p>Tuning parameters, ablations, report writing…</p>
                 </article>
                 <article class="report-card">
-                  <h3>Blockers</h3>
+                  <h3>What we Learned</h3>
                   <p>Optional: note dependencies or open questions.</p>
                 </article>
               </div>
