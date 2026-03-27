@@ -888,3 +888,16 @@ body {
     padding: 2rem 1.5rem;
   }
 }
+.introduction {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.introduction .container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.introduction p {
+  line-height: 1.6;
+}
