@@ -750,13 +750,18 @@ body {
 }
 
 /* Report grid */
-.report-grid {
+/* .report-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1rem;
   margin-top: 1.25rem;
+} */
+.report-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin: top 1.25rem;
 }
-
 .report-card {
   margin: 0;
   padding: 1.25rem;
@@ -890,7 +895,7 @@ body {
 }
 .introduction {
   padding: 60px 20px;
-  text-align: center;
+  text-align: left;
 }
 
 .introduction .container {
