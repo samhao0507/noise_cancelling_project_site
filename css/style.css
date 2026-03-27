@@ -468,6 +468,12 @@ body {
   transform: translateX(4px);
   opacity: 1;
 }
+.section-subdescription {
+  color: #888;          
+  font-size: 14px;
+  margin-top: 8px;
+  margin-bottom: 20px;
+}
 
 .breadcrumb {
   margin-bottom: 1.5rem;
