@@ -468,12 +468,6 @@ body {
   transform: translateX(4px);
   opacity: 1;
 }
-.section-subdescription {
-  color: #888;          
-  font-size: 14px;
-  margin-top: 8px;
-  margin-bottom: 20px;
-}
 
 .breadcrumb {
   margin-bottom: 1.5rem;
@@ -904,5 +898,16 @@ body {
 }
 
 .introduction p {
+  font-size: 18px;
   line-height: 1.6;
+}
+.section-subdescription {
+  color: #888;          
+  font-size: 17px;
+  margin-top: 8px;
+  margin-bottom: 20px;
+}
+.introduction h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
 }
