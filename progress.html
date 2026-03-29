@@ -136,11 +136,11 @@
               <img src="Progress_report1.jpg" alt="Progress report: waveform plots" class="progress-plot-img">
               <p>This shows three waveform plots, each representing a data type we will use in our project. We will be using clean instrumental audio, noise audio, and audio mixing the clean and the noise audio. We will mainly be focusing on eliminating the noise in subplot 3 and reverting it back to subplot 1.The audio samples can be found under Work, Challenge, Learned.</p>
               <h3>Plot #2: FFT</h3>
-              <img src="Progress_report2.jpg" alt="Progress report: FFT coefficients" class="progress-plot-img">
-              <p>This shows the FFT coefficients of our noisy data (which mixed the clean and noise). In our project, we will use STFT as our input to the CNN model. And STFT is doing FFT for each frame.</p>
+              <img src="Progress_report2_comp.jpg" alt="Progress report: FFT coefficients" class="progress-plot-img">
+              <p>This shows the FFT coefficients of our clean data and noisy data (which mixed the clean and noise). In our project, we will use STFT as our input to the CNN model. And STFT is doing FFT for each frame. From the comparison, we observe additional spikes in the low-frequency range of the noisy data, which correspond to the synthesized noise we introduced.</p>
               <h3>Plot #3: STFT</h3>
-              <img src="Progress_report3.jpg" alt="Progress report: STFT spectrogram" class="progress-plot-img">
-              <p>This shows the STFT of our noisy data. This will be our main input to the CNN model. The model will then learn from the spectrogram and do their best to denoise the noisy audio. </p>
+              <img src="Progress_report3_comp.jpg" alt="Progress report: STFT spectrogram" class="progress-plot-img">
+              <p>This shows the STFT of our noisy data. This will be our main input to the CNN model. The model will then learn from the spectrogram and do their best to denoise the noisy audio. From the comparison, it can be observced that the noisy data has higher power in the low-frequency range across all time periods. </p>
             </div>
 
             <div class="tab-panel" role="tabpanel" id="panel-done" aria-labelledby="tab-done" hidden data-panel="done">
