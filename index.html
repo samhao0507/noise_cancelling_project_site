@@ -47,9 +47,12 @@
       <div class="container">
         <h2 class="section-title section-grid-heading">Introduction</h2>
         <p class="section-subdescription">This website is created for presenting the outcomes of the final project of EECS 351: Intro to Digital Signal Processing class at University of Michigan by Group 11 - Yin Siang Hao, Ronald Kreucher, Harry Lyu, Yi Rong.</p>
-        <p class="section-text">
-          Inspired by multiple musical instruments and devices we hold at home, our project focuses on removing the ambient audio noise in audio recordings. We focus on cancelling the ambient noise, such as people-chatting, dog-barking, and air-conditioner noise, which are prevalent in musical recordings. At first, our group is planning on cancelling out the sound of people chattering from a dataset Sam found online. When our model cancels out that noise well, we will expand to those other noise sources above. We first tried out simple filtering on the recordings to see the effect. Later, we used multiple DSP techniques, including Analysis in a Different Basis, Frequency Domain Analysis (STFT), Sampling (Resampling). We used a CNN model to better restore the clean audio and this implements Image processing techniques. Our final task is to produce a system that can cancel out ambient noise and restore the cleanest recordings. And we used recordings made by ourselves to test the models and show the results.
-        </p>
+        <div class="section-text">
+          <p>We noticed that non-professional recordings of instrument ensembles often contain unpleasant ambient noises. Inspired by this struggle, we decided to build a system to automatically remove ambient noises from instrumental audio recordings, restoring the clean sound of bells, acoustic guitar, violin, and other instruments from recordings contaminated with real-world noise, such as people-chatting, dog-barking, and air-conditioner noise, which are prevalent in musical recordings.</p>
+          <p>We plan to tackle the noise of people chattering from a dataset Sam found online (<a href="https://depositonce.tu-berlin.de/items/aa9f01e1-3eb7-44f9-a5c8-fe1b4c858024" rel="noopener noreferrer">depositonce.tu-berlin.de</a>). Once our model performs well enough on denoising this noise type from instrumentals, we will expand to other noise sources in the dataset (autos, coffee machine, dishwasher, washing machine, microwave, background music, radio, vacuum cleaner, TV, other minor ambient noises).</p>
+          <p>We first tried out simple filtering on the recordings to see the denoising effect, later attempting the same noise by applying multiple DSP techniques, including Analysis in a Different Basis, Frequency Domain Analysis (STFT), Sampling (Resampling).</p>
+          <p>Finally, we’ll train a deep learning model, specifically a convolutional neural network (CNN), to denoise our noisy instrumental audios. We chose to use a simple 2-level U-Net denoiser based on convolutional neural network (CNN) models. This approach first converts each noisy recording into a spectrogram — a 2D picture of how sound energy is distributed across frequency and time — and trains a convolutional neural network (CNN) that learns to generate denoised-version spectrograms.</p>
+        </div>
       </div>
     </section>
 
@@ -100,6 +103,10 @@
           <article class="about-us-card">
             <h3 class="about-us-name">Yin-Siang Hao</h3>
             <p class="about-us-bio">Yin-Siang Hao is a junior majoring in Computer Engineering from Taiwan. He is mainly interested in computer architecture, machine learning, and compiler design. Contact: <a href="mailto:samhao@umich.edu">samhao@umich.edu</a></p>
+          </article>
+          <article class="about-us-card">
+            <h3 class="about-us-name">Harry Lyu</h3>
+            <p class="about-us-bio">Harry Lyu is a junior majoring in Electrical Engineering from China. He is interested in signal, image processing, computer vision, and machine learning. Contact: <a href="mailto:harrylyu@umich.edu">harrylyu@umich.edu</a></p>
           </article>
         </div>
       </div>

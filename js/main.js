@@ -127,6 +127,21 @@
     });
   });
 
+  /* Sync tab panels on load (script is at end of body; DOMContentLoaded may have fired). */
+  function syncTabsFromActiveButton() {
+    const activeBtn = document.querySelector(".subsection-tabs .tab-btn.is-active");
+    if (activeBtn && tabButtons.length && tabPanels.length) {
+      const initial = activeBtn.getAttribute("data-tab");
+      if (initial) activateTab(initial);
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", syncTabsFromActiveButton);
+  } else {
+    syncTabsFromActiveButton();
+  }
+
   /* Intersection: panel lift on view */
   if ("IntersectionObserver" in window) {
     const io = new IntersectionObserver(

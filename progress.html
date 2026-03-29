@@ -3,9 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
   <title>Progress · Noise Cancellation Final Project</title>
-  <link rel="stylesheet" href="css/fonts.css" />
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/fonts.css?v=20260334" />
+  <link rel="stylesheet" href="css/style.css?v=20260334" />
 </head>
 <body data-nav-page="progress">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -47,52 +49,97 @@
           <!-- <p class="panel-lead">Track how the idea evolved and what milestones you have hit.</p> -->
           <p class="panel-lead">3/29</p>
           <div class="subsection-tabs" role="tablist" aria-label="Progress subsections">
-            <!-- <button type="button" class="tab-btn is-active" role="tab" id="tab-idea" aria-selected="true" aria-controls="panel-idea" data-tab="idea">Idea finalization</button> -->
-            <button type="button" class="tab-btn is-active" role="tab" id="tab-plan" aria-selected="true" aria-controls="panel-plan" data-tab="plan">Plan</button>
+            <button type="button" class="tab-btn is-active" role="tab" id="tab-intro" aria-selected="true" aria-controls="panel-intro" data-tab="intro">Intro</button>
+            <button type="button" class="tab-btn" role="tab" id="tab-plan" aria-selected="false" aria-controls="panel-plan" data-tab="plan">Plan</button>
             <button type="button" class="tab-btn" role="tab" id="tab-plots" aria-selected="false" aria-controls="panel-plots" data-tab="plots">Plots of data</button>
             <button type="button" class="tab-btn" role="tab" id="tab-done" aria-selected="false" aria-controls="panel-done" data-tab="done">Work, Challenges, Learned</button>
             <!-- <button type="button" class="tab-btn" role="tab" id="tab-learned" aria-selected="false" aria-controls="panel-learned" data-tab="learned">What we learned</button> -->
           </div>
 
           <div class="tab-panels">
-            <div class="tab-panel is-visible" role="tabpanel" id="panel-plan" aria-labelledby="tab-plan" data-panel="plan">
+            <div class="tab-panel is-visible" role="tabpanel" id="panel-intro" aria-labelledby="tab-intro" data-panel="intro">
+              <div class="progress-intro-tab">
+                <h2 class="section-title section-grid-heading">Introduction</h2>
+                <div class="section-text">
+                  <p>We noticed that non-professional recordings of instrument ensembles often contain unpleasant ambient noises. Inspired by this struggle, we decided to build a system to automatically remove ambient noises from instrumental audio recordings, restoring the clean sound of bells, acoustic guitar, violin, and other instruments from recordings contaminated with real-world noise, such as people-chatting, dog-barking, and air-conditioner noise, which are prevalent in musical recordings.</p>
+                  <p>We plan to tackle the noise of people chattering from a dataset Sam found online (<a href="https://depositonce.tu-berlin.de/items/aa9f01e1-3eb7-44f9-a5c8-fe1b4c858024" rel="noopener noreferrer">depositonce.tu-berlin.de</a>). Once our model performs well enough on denoising this noise type from instrumentals, we will expand to other noise sources in the dataset (autos, coffee machine, dishwasher, washing machine, microwave, background music, radio, vacuum cleaner, TV, other minor ambient noises).</p>
+                  <p>We first tried out simple filtering on the recordings to see the denoising effect, later attempting the same noise by applying multiple DSP techniques, including Analysis in a Different Basis, Frequency Domain Analysis (STFT), Sampling (Resampling).</p>
+                  <p>Finally, we’ll train a deep learning model, specifically a convolutional neural network (CNN), to denoise our noisy instrumental audios. We chose to use a simple 2-level U-Net denoiser based on convolutional neural network (CNN) models. This approach first converts each noisy recording into a spectrogram — a 2D picture of how sound energy is distributed across frequency and time — and trains a convolutional neural network (CNN) that learns to generate denoised-version spectrograms.</p>
+                  <p>Ronald Kreucher is a junior majoring in Computer Engineering from Ann Arbor, MI. He is primarily interested in data structures &amp; algorithms, and signal processing. Contact: <a href="mailto:ronaldjk@umich.edu">ronaldjk@umich.edu</a></p>
+                  <p>Yi Rong is a sophomore majoring in Computer Engineering from China. She is interested in embedded systems and signal processing. Contact: <a href="mailto:yoyorong@umich.edu">yoyorong@umich.edu</a></p>
+                  <p>Yin-Siang Hao is a junior majoring in Computer Engineering from Taiwan. He is mainly interested in computer architecture, machine learning, and compiler design. Contact: <a href="mailto:samhao@umich.edu">samhao@umich.edu</a></p>
+                  <p>Harry Lyu is a junior majoring in Electrical Engineering from China. He is interested in signal, image processing, computer vision, and machine learning. Contact: <a href="mailto:harrylyu@umich.edu">harrylyu@umich.edu</a></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-panel" role="tabpanel" id="panel-plan" aria-labelledby="tab-plan" hidden data-panel="plan">
               <h2 class="sr-only">Our plans</h2>
-              <p>In the following three weeks, we will:</p>
-              <ul class="timeline">
+              <p class="plan-lead">In the following three weeks, we will:</p>
+              <ul class="timeline timeline--plan" role="list">
                 <li class="timeline-item">
-                  <span class="timeline-dot"></span>
+                  <span class="timeline-dot" aria-hidden="true"></span>
                   <div class="timeline-copy">
-                    <strong>3/30-4/4</strong>
-                    <span>Add noise using the noising function to the clean data and create the noisy dataset. <br>Spilt the dataset into training, validation, and testing. <br>Tune the CNN Model.</span>
+                    <strong id="plan-w1">Week of 3/23 — Setup &amp; Progress Report</strong>
+                    <ul class="plan-list plan-list--nested">
+                      <li>Select and download dataset</li>
+                      <li>Implement / obtain noise-adding function</li>
+                      <li>Generate initial plots and visualizations</li>
+                      <li>Design and refine CNN (U-Net) architecture</li>
+                      <li>Complete and submit progress report deliverables</li>
+                    </ul>
                   </div>
                 </li>
                 <li class="timeline-item">
-                  <span class="timeline-dot"></span>
+                  <span class="timeline-dot" aria-hidden="true"></span>
                   <div class="timeline-copy">
-                    <strong>4/5-4/18</strong>
-                    <span>Train the model by adding noise 1-by-1 on the clean data.</span>
+                    <strong id="plan-w2">Week of 3/30 — Data Preparation &amp; Model Finalization</strong>
+                    <ul class="plan-list plan-list--nested">
+                      <li>Apply noise function to entire dataset (create noisy dataset)</li>
+                      <li>Split data into train / validation / test sets</li>
+                      <li>Finalize CNN model implementation</li>
+                    </ul>
                   </div>
                 </li>
                 <li class="timeline-item">
-                  <span class="timeline-dot"></span>
+                  <span class="timeline-dot" aria-hidden="true"></span>
                   <div class="timeline-copy">
-                    <strong>4/19-</strong>
-                    <span>Compare deep learning results to filtering with the recordings we made<br>Test on our own data. <br> Finalize on the website.</span>
+                    <strong id="plan-w3">Weeks of 4/6 &amp; 4/13 — Training Phase</strong>
+                    <ul class="plan-list plan-list--nested">
+                      <li>Train model using noisy → clean data pairs</li>
+                      <li>Iterate on training (tuning, debugging, improvements)</li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="timeline-item">
+                  <span class="timeline-dot" aria-hidden="true"></span>
+                  <div class="timeline-copy">
+                    <strong id="plan-w4">Week of 4/20 — Evaluation &amp; Final Deliverables</strong>
+                    <ul class="plan-list plan-list--nested">
+                      <li>Compare model performance vs. traditional filtering methods</li>
+                      <li>Evaluate using both dataset and your own recordings</li>
+                      <li>Compile results, visualizations, and analysis</li>
+                      <li>Build and finalize project website</li>
+                    </ul>
                   </div>
                 </li>
               </ul>
             </div>
             
             <div class="tab-panel" role="tabpanel" id="panel-plots" aria-labelledby="tab-plots" hidden data-panel="plots">
-              <h2 class="sr-only">New Plots</h2>
+              <h2 class="sr-only">Plots of data</h2>
+              <div id="dataset-description" class="plots-callout" role="note">
+                <strong class="plots-callout-label">Dataset preparation</strong>
+                <p class="plots-callout-text">The dataset consists of clean instrumentals, human speech noise files, and mixed audio of both. Every clean instrumental is randomly paired with a noise file and mixed with an arbitrary signal-to-noise ratio (SNR), then trimmed to desirable lengths.</p>
+              </div>
               <h3>Plot #1: Waveforms</h3>
-              <img src="Progress_report1.jpg", alt="ProgressReport1">
+              <img src="Progress_report1.jpg" alt="Progress report: waveform plots" class="progress-plot-img">
               <p>This shows three waveform plots, each representing a data type we will use in our project. We will be using clean instrumental audio, noise audio, and audio mixing the clean and the noise audio. We will mainly be focusing on eliminating the noise in subplot 3 and reverting it back to subplot 1.The audio samples can be found under Work, Challenge, Learned.</p>
               <h3>Plot #2: FFT</h3>
-              <img src="Progress_report2.jpg", alt="ProgressReport2">
+              <img src="Progress_report2.jpg" alt="Progress report: FFT coefficients" class="progress-plot-img">
               <p>This shows the FFT coefficients of our noisy data (which mixed the clean and noise). In our project, we will use STFT as our input to the CNN model. And STFT is doing FFT for each frame.</p>
               <h3>Plot #3: STFT</h3>
-              <img src="Progress_report3.jpg", alt="ProgressReport3">
+              <img src="Progress_report3.jpg" alt="Progress report: STFT spectrogram" class="progress-plot-img">
               <p>This shows the STFT of our noisy data. This will be our main input to the CNN model. The model will then learn from the spectrogram and do their best to denoise the noisy audio. </p>
             </div>
 
@@ -118,6 +165,9 @@
                   <audio controls>
                     <source src="1_violin_noisy.wav" type="audio/wav">
                   </audio>
+                  <figure class="progress-done-figure progress-done-figure--after-audio">
+                    <img src="simple_unet_denoiser.svg" alt="Simple U-Net denoiser architecture diagram" class="progress-plot-img" />
+                  </figure>
                 </div>
                 </article>
                 <article class="report-card">
@@ -143,6 +193,6 @@
     <button type="button" class="to-top" id="to-top" aria-label="Back to top">↑</button>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=20260334"></script>
 </body>
 </html>

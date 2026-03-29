@@ -1,0 +1,150 @@
+<style>
+#conv-wrap { padding: 1rem 0; }
+.conv-label { font-size: 13px; color: var(--color-text-secondary); margin-bottom: 6px; }
+.conv-title { font-size: 14px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 4px; }
+.grid-wrap { display: inline-block; }
+table.spec { border-collapse: collapse; }
+table.spec td { width: 30px; height: 30px; text-align: center; font-size: 11px; font-family: var(--font-mono); border: 0.5px solid var(--color-border-tertiary); transition: background 0.25s, color 0.25s; color: var(--color-text-secondary); }
+td.highlight { outline: 2.5px solid #534AB7; outline-offset: -1.5px; z-index: 2; position: relative; }
+td.output-active { outline: 2.5px solid #1D9E75; outline-offset: -1.5px; }
+.btn-row { display: flex; gap: 8px; margin-top: 12px; align-items: center; }
+.desc { font-size: 13px; color: var(--color-text-secondary); margin-top: 10px; min-height: 36px; }
+.value-chip { display: inline-block; padding: 1px 7px; border-radius: 4px; font-size: 12px; font-family: var(--font-mono); background: var(--color-background-secondary); border: 0.5px solid var(--color-border-tertiary); color: var(--color-text-primary); }
+</style>
+<div id="conv-wrap">
+  <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; align-items: start;">
+    <div>
+      <div class="conv-title">Noisy spectrogram</div>
+      <div class="conv-label">6×6 input (log-magnitude)</div>
+      <div class="grid-wrap"><table class="spec" id="input-grid"></table></div>
+    </div>
+    <div>
+      <div class="conv-title">Filter kernel</div>
+      <div class="conv-label">3×3 learned weights</div>
+      <div class="grid-wrap"><table class="spec" id="kernel-grid"></table></div>
+      <div style="margin-top:8px; font-size:12px; color:var(--color-text-secondary);">detects horizontal<br>frequency band</div>
+    </div>
+    <div>
+      <div class="conv-title">Feature map</div>
+      <div class="conv-label">4×4 output (responses)</div>
+      <div class="grid-wrap"><table class="spec" id="output-grid"></table></div>
+    </div>
+  </div>
+  <div class="desc" id="desc-text">Press Step to slide the filter across the spectrogram.</div>
+  <div class="btn-row">
+    <button onclick="stepConv()" id="step-btn">Step</button>
+    <button onclick="autoConv()" id="auto-btn">Auto-play</button>
+    <button onclick="resetConv()">Reset</button>
+    <span style="font-size:12px; color:var(--color-text-secondary); margin-left:8px;" id="pos-label">position: (0,0)</span>
+  </div>
+</div>
+<script>
+const input = [
+  [0.1, 0.2, 0.8, 0.7, 0.1, 0.1],
+  [0.1, 0.1, 0.9, 0.8, 0.2, 0.1],
+  [0.2, 0.3, 0.7, 0.6, 0.1, 0.2],
+  [0.6, 0.7, 0.2, 0.1, 0.7, 0.8],
+  [0.7, 0.8, 0.1, 0.1, 0.8, 0.9],
+  [0.1, 0.1, 0.2, 0.2, 0.1, 0.1],
+];
+const kernel = [
+  [0.1, 0.3, 0.1],
+  [0.2, 0.8, 0.2],
+  [0.1, 0.3, 0.1],
+];
+let outputMap = Array.from({length:4}, () => Array(4).fill(null));
+let pos = {r:0, c:0};
+let autoTimer = null;
+
+function cellBg(v) {
+  const r = Math.round(v*255);
+  const isDark = matchMedia('(prefers-color-scheme: dark)').matches;
+  if (isDark) return `rgb(${Math.round(v*80+30)},${Math.round(v*80+30)},${Math.round(v*120+40)})`;
+  return `rgb(${255-Math.round(v*180)},${255-Math.round(v*100)},${255-Math.round(v*20)})`;
+}
+function cellColor(v) {
+  return v > 0.5 ? 'var(--color-text-primary)' : 'var(--color-text-secondary)';
+}
+function kernelBg(v) {
+  const isDark = matchMedia('(prefers-color-scheme: dark)').matches;
+  if (isDark) return `rgb(${Math.round(40+v*80)},${Math.round(20+v*40)},${Math.round(80+v*100)})`;
+  return `rgb(${Math.round(238-v*100)},${Math.round(237-v*180)},${Math.round(254-v*60)})`;
+}
+function buildGrid(tableId, data, rows, cols, cls) {
+  const t = document.getElementById(tableId);
+  t.innerHTML = '';
+  for (let r=0; r<rows; r++) {
+    const tr = document.createElement('tr');
+    for (let c=0; c<cols; c++) {
+      const td = document.createElement('td');
+      const v = data[r][c];
+      if (v !== null) {
+        td.style.background = cls === 'kernel' ? kernelBg(v) : cellBg(v);
+        td.textContent = v.toFixed(1);
+        td.style.color = cellColor(v);
+      } else {
+        td.textContent = '';
+      }
+      td.id = `${tableId}-${r}-${c}`;
+      tr.appendChild(td);
+    }
+    t.appendChild(tr);
+  }
+}
+function computeConv(r, c) {
+  let sum = 0;
+  for (let kr=0; kr<3; kr++)
+    for (let kc=0; kc<3; kc++)
+      sum += input[r+kr][c+kc] * kernel[kr][kc];
+  return Math.min(1, sum / 2);
+}
+function highlight(r, c) {
+  document.querySelectorAll('#input-grid td').forEach(td => td.classList.remove('highlight'));
+  document.querySelectorAll('#output-grid td').forEach(td => td.classList.remove('output-active'));
+  for (let kr=0; kr<3; kr++)
+    for (let kc=0; kc<3; kc++)
+      document.getElementById(`input-grid-${r+kr}-${c+kc}`).classList.add('highlight');
+  const out = document.getElementById(`output-grid-${r}-${c}`);
+  if (out) out.classList.add('output-active');
+}
+function stepConv() {
+  const r = pos.r, c = pos.c;
+  const val = computeConv(r, c);
+  outputMap[r][c] = val;
+  const outTd = document.getElementById(`output-grid-${r}-${c}`);
+  if (outTd) {
+    outTd.style.background = cellBg(val);
+    outTd.textContent = val.toFixed(2);
+    outTd.style.color = cellColor(val);
+  }
+  highlight(r, c);
+  const isDark = matchMedia('(prefers-color-scheme: dark)').matches;
+  document.getElementById('pos-label').textContent = `position: (${r},${c})`;
+  const dotProd = (kernel.flat().reduce((s, k, i) => s + k * input[r + Math.floor(i/3)][c + i%3], 0));
+  document.getElementById('desc-text').innerHTML =
+    `Filter centered at row <span class="value-chip">${r}</span>, col <span class="value-chip">${c}</span>. `+
+    `Dot product of 3×3 patch × kernel = <span class="value-chip">${val.toFixed(3)}</span>. `+
+    `High response = this patch looks like the kernel's pattern (horizontal harmonic band).`;
+  pos.c++;
+  if (pos.c > 3) { pos.c = 0; pos.r++; }
+  if (pos.r > 3) { pos.r = 0; pos.c = 0; if (autoTimer) { clearInterval(autoTimer); autoTimer=null; document.getElementById('auto-btn').textContent='Auto-play'; } }
+}
+function autoConv() {
+  if (autoTimer) { clearInterval(autoTimer); autoTimer=null; document.getElementById('auto-btn').textContent='Auto-play'; return; }
+  document.getElementById('auto-btn').textContent = 'Pause';
+  autoTimer = setInterval(stepConv, 500);
+}
+function resetConv() {
+  if (autoTimer) { clearInterval(autoTimer); autoTimer=null; document.getElementById('auto-btn').textContent='Auto-play'; }
+  pos = {r:0, c:0};
+  outputMap = Array.from({length:4}, () => Array(4).fill(null));
+  buildGrid('input-grid', input, 6, 6, 'input');
+  buildGrid('kernel-grid', kernel, 3, 3, 'kernel');
+  buildGrid('output-grid', outputMap, 4, 4, 'output');
+  document.getElementById('desc-text').textContent = 'Press Step to slide the filter across the spectrogram.';
+  document.getElementById('pos-label').textContent = 'position: (0,0)';
+}
+buildGrid('input-grid', input, 6, 6, 'input');
+buildGrid('kernel-grid', kernel, 3, 3, 'kernel');
+buildGrid('output-grid', outputMap, 4, 4, 'output');
+</script>

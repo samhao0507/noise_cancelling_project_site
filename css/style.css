@@ -668,25 +668,34 @@ body {
   min-height: 12rem;
 }
 
-.tab-panel {
-  opacity: 0;
-  transform: translateY(8px);
-  pointer-events: none;
-  transition: opacity 0.35s var(--ease), transform 0.35s var(--ease);
+/* Visibility is driven by the [hidden] attribute (set by JS). Avoid opacity:0 on
+   inactive panels without hidden — that made panels look “empty” if classes drifted. */
+.tab-panel[hidden] {
+  display: none !important;
 }
 
-.tab-panel.is-visible {
+.tab-panel:not([hidden]) {
+  display: block;
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
   pointer-events: auto;
 }
 
-.tab-panel[hidden] {
-  display: none;
+@media (prefers-reduced-motion: no-preference) {
+  .tab-panel:not([hidden]) {
+    animation: tabPanelIn 0.35s var(--ease) both;
+  }
 }
 
-.tab-panel.is-visible:not([hidden]) {
-  display: block;
+@keyframes tabPanelIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Timeline */
@@ -738,6 +747,36 @@ body {
   font-size: 0.98rem;
 }
 
+.timeline--plan {
+  margin-top: 0.75rem;
+  margin-bottom: 0;
+}
+
+.timeline--plan .timeline-item:last-child {
+  padding-bottom: 0.25rem;
+}
+
+.timeline-copy .plan-list--nested {
+  margin: 0.55rem 0 0;
+  padding-left: 1.2rem;
+  list-style: disc;
+  color: var(--ink);
+}
+
+.timeline-copy .plan-list--nested li {
+  margin-bottom: 0.35rem;
+  font-size: 0.96rem;
+  line-height: 1.5;
+}
+
+.timeline--plan .timeline-copy strong {
+  font-size: 0.88rem;
+  line-height: 1.35;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  color: var(--sage-deep);
+}
+
 /* Report grid */
 /* .report-grid {
   display: grid;
@@ -749,7 +788,7 @@ body {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
-  margin: top 1.25rem;
+  margin-top: 1.25rem;
 }
 .report-card {
   margin: 0;
@@ -902,10 +941,104 @@ body {
   line-height: 1.55;
 }
 
-.introduction .section-text {
+.introduction .section-text,
+.progress-intro-tab .section-text {
   font-size: 0.98rem;
   line-height: 1.6;
+}
+
+.introduction .section-text p,
+.progress-intro-tab .section-text p {
+  margin: 0 0 1rem;
+}
+
+.introduction .section-text p:last-child,
+.progress-intro-tab .section-text p:last-child {
+  margin-bottom: 0;
+}
+
+.introduction .section-text a,
+.progress-intro-tab .section-text a {
+  color: var(--sage-deep);
+  text-decoration: none;
+}
+
+.introduction .section-text a:hover,
+.introduction .section-text a:focus-visible,
+.progress-intro-tab .section-text a:hover,
+.progress-intro-tab .section-text a:focus-visible {
+  text-decoration: underline;
+}
+
+/* Progress page: plan phases & plots intro */
+.plan-lead {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+.plots-intro,
+.plots-callout {
+  margin: 0 0 1.35rem;
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: var(--ink);
+}
+
+.plots-callout {
+  padding: 1rem 1.15rem 1.1rem;
+  background: var(--cream);
+  border-radius: var(--radius);
+  border-left: 4px solid var(--sage-deep);
+  box-shadow: 0 2px 12px var(--shadow);
+}
+
+.plots-callout-label {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--sage-deep);
+  margin-bottom: 0.5rem;
+}
+
+.plots-callout-text {
   margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+
+.progress-plot-img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0.5rem 0 1rem;
+  border-radius: var(--radius);
+}
+
+.progress-done-figure {
+  margin: 1.75rem 0 0;
+  padding: 0;
+}
+
+.progress-done-figure--after-audio {
+  margin-top: 1.5rem;
+  margin-bottom: 0;
+}
+
+.audio-section {
+  margin-top: 1.5rem;
+}
+
+.audio-section h4 {
+  margin: 1rem 0 0.4rem;
+}
+
+.audio-section h4:first-child {
+  margin-top: 0;
 }
 
 .about-us-grid {
