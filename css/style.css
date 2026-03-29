@@ -423,11 +423,6 @@ body {
   background: linear-gradient(160deg, var(--white) 0%, color-mix(in srgb, var(--dusty-blue) 12%, var(--white)) 100%);
 }
 
-@media (min-width: 720px) {
-  .section-card--wide {
-    grid-column: span 2;
-  }
-}
 
 .section-card-index {
   font-family: var(--font-serif);
@@ -879,35 +874,68 @@ body {
     max-width: calc(100vw - 5.5rem);
   }
 
-  .section-card--wide {
-    grid-column: span 1;
-  }
-
   .panel {
     padding: 2rem 1.5rem;
   }
 }
-.introduction {
+.introduction,
+.about-us {
   padding: 60px 20px;
   text-align: left;
 }
 
-.introduction .container {
+.introduction .container,
+.about-us .container {
   max-width: 800px;
   margin: 0 auto;
 }
 
-.introduction p {
-  font-size: 18px;
-  line-height: 1.6;
+.section-title.section-grid-heading {
+  margin-bottom: 0.65rem;
 }
+
 .section-subdescription {
-  color: #888;          
-  font-size: 17px;
-  margin-top: 8px;
-  margin-bottom: 20px;
+  color: #888;
+  font-size: 0.9375rem;
+  margin-top: 0.35rem;
+  margin-bottom: 1.1rem;
+  line-height: 1.55;
 }
-.introduction h2 {
-  font-size: 32px;
-  margin-bottom: 10px;
+
+.introduction .section-text {
+  font-size: 0.98rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.about-us-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.about-us-name {
+  margin: 0 0 0.4rem;
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.about-us-bio {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: var(--ink);
+}
+
+.about-us-bio a {
+  color: var(--sage-deep);
+  text-decoration: none;
+}
+
+.about-us-bio a:hover,
+.about-us-bio a:focus-visible {
+  text-decoration: underline;
 }
