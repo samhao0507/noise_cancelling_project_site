@@ -89,7 +89,7 @@
               <h2 class="sr-only">New Plots</h2>
               <h3>Plot #1: Waveforms</h3>
               <img src="Progress_report1.jpg", alt="ProgressReport1">
-              <p>This shows three waveform plots, each representing a data type we will use in our project. We will be using clean instrumental audio, noise audio, and audio mixing the clean and the noise audio. We will mainly be focusing on eliminating the noise in subplot 3 and reverting it back to subplot 1.</p>
+              <p>This shows three waveform plots, each representing a data type we will use in our project. We will be using clean instrumental audio, noise audio, and audio mixing the clean and the noise audio. We will mainly be focusing on eliminating the noise in subplot 3 and reverting it back to subplot 1.The audio samples can be found under Work, Challenge, Learned.</p>
               <h3>Plot #2: FFT</h3>
               <img src="Progress_report2.jpg", alt="ProgressReport2">
               <p>This shows the FFT coefficients of our noisy data (which mixed the clean and noise). In our project, we will use STFT as our input to the CNN model. And STFT is doing FFT for each frame.</p>
@@ -105,11 +105,26 @@
                 <article class="report-card">
                   <h3>What we have done</h3>
 		  <!-- <p>We have found our main topic and some datasets that we would like to use, including clean instrumental datasets and ambient noise dataset. We applied some simple filtering, frequency domain analysis, and STFT to these clean and noisy datasets. As for the deep learning algorithm, we wrote a small Matlab program to loop over a directory and apply a certain noise to all of the clean data files (which is much better than doing by hand with lots of training data). We have also built a preliminary CNN structure which we will continue to refine and tune for our purposes.</p>                </article> -->
-                <p>We have found our main topic and some datasets that we would like to use, including clean instrumental datasets and ambient noise dataset. We applied some simple filtering, frequency domain analysis, and STFT to these clean and noisy datasets. As for the deep learning algorithm, we wrote a Matlab and a Python code that randomly pairs each clean instrumental audio with a certain noise audio and mixes them (for now we used human speech noise). We have also built a preliminary CNN structure which we will continue to refine and tune for our purposes. </p>
+                <p>We have found our main topic and some datasets that we would like to use, including clean instrumental datasets and ambient noise dataset. We also applied some simple filtering, frequency domain analysis, and STFT to these clean and noisy datasets(as can be seen under the tab Plot of Data). As for the deep learning algorithm, we wrote a Matlab and a Python code that randomly pairs each clean instrumental audio with a certain noise audio and mixes them (for now we used human speech noise). We have synthesized some samples of noisy data. We have also built a preliminary CNN structure which we will continue to refine and tune for our purposes. </p>
+                <div class="audio-section">
+                  <h4>Clean Instrument Audio</h4>
+                  <audio controls>
+                    <source src="1_violin.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                  </audio>
+                  <h4>Noise (People chattering)</h4>
+                  <audio controls>
+                    <source src="people _ 1528795663667_1.wav" type="audio/wav">
+                  </audio>
+                  <h4>Noisy Audio (with Speech Noise)</h4>
+                  <audio controls>
+                    <source src="1_violin_noisy.wav" type="audio/wav">
+                  </audio>
+                </div>
                 </article>
                 <article class="report-card">
                   <h3>Challenges</h3>
-                  <p>Our group is new to CNNs and Machine Learning models in general, so we have been researching scholarly articles and Matlab documentation to help us. Also, one of our goals is trying to eliminate multiple possible sources of noise, meaning that we will need a lot of training data and good time management.</p>
+                  <p>Our group is new to CNNs and Machine Learning models in general, so we have been researching scholarly articles and Matlab documentation to help us. Originally, we wanted to use audios recorded by ourselves. However, we soon found out the dataset required for training is large and we could not have so many audios prepared in a short time. Also, it is hard to create noisy data that uses the same clean data which we will use for our model's ground truth. Therefore, we switched to synthesizing noisy data instead of recording it by ourselves. Another thing is one of our goals is trying to eliminate multiple possible sources of noise, meaning that we will need a lot of training data and good time management. </p>
                 </article>
                 <article class="report-card">
                   <h3>What we Learned</h3>
