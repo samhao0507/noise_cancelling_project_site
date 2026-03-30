@@ -133,14 +133,14 @@
                 <p class="plots-callout-text">The dataset consists of clean instrumentals, human speech noise files, and mixed audio of both. Every clean instrumental is randomly paired with a noise file and mixed with an arbitrary signal-to-noise ratio (SNR), then trimmed to desirable lengths.</p>
               </div>
               <h3>Plot #1: Waveforms</h3>
-              <img src="progress_report_1.png" alt="Progress report: waveform plots" class="progress-plot-img">
+              <img src="progress_report_1.png" alt="Progress report: waveform plots" class="progress-plot-img" width="500" height="600">
               <p>This shows three waveform plots, each representing a data type we will use in our project. We will be using clean instrumental audio, noise audio, and audio mixing the clean and the noise audio. We will mainly be focusing on eliminating the noise in subplot 3 and reverting it back to subplot 1. The audio sample used was of a violin recording, and the noise sample was of people chattering. We applied noise to the audio file by picking a random segment in the noise file equal to the length of the clean music file. We then multiplied this noise segment by the square root of the signal-to-noise ratio (snr) of the clean recording to the noisy recording. We then added that sound to the clean audio to obtain the final audio file with noise. All three files (clean audio, noise, noisy audio) can be found in the Work, Challenges, Learned tab.</p>
 	      <p> How to noise the clean audio file was inspired by this source: https://www.mathworks.com/help/audio/ug/denoise-speech-using-deep-learning-networks.html</p>
               <h3>Plot #2: FFT</h3>
-              <img src="progress_report_2.png" alt="Progress report: FFT coefficients" class="progress-plot-img">
+              <img src="progress_report_2.png" alt="Progress report: FFT coefficients" class="progress-plot-img" width="500" height="600">
               <p>This shows the FFT coefficients of our clean data and noisy data (which mixed the clean and noise). In our project, we will use STFT as our input to the CNN model. And STFT is doing FFT for each frame. From the comparison, we observe additional spikes in the low-frequency range of the noisy data, which correspond to the synthesized noise we introduced.</p>
               <h3>Plot #3: STFT</h3>
-              <img src="progeess_report_3.png" alt="Progress report: STFT spectrogram" class="progress-plot-img">
+              <img src="progeess_report_3.png" alt="Progress report: STFT spectrogram" class="progress-plot-img" width="500" height="600">
               <p>This shows the STFT of our noisy data. This will be our main input to the CNN model. The model will then learn from the spectrogram and do their best to denoise the noisy audio. From the comparison, it can be observced that the noisy data has higher power in the low-frequency range across all time periods. </p>
             </div>
 
