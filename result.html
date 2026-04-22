@@ -21,7 +21,8 @@
         <ul class="nav-list">
           <!-- <li><a href="introduction.html" data-nav="introduction">Intro</a></li> -->
           <li><a href="data.html" data-nav="data">Data</a></li>
-          <li><a href="method.html" data-nav="method">Method</a></li>
+          <li><a href="method1-basicfiltering.html" data-nav="method1-basicfiltering">Basic Filtering</a></li>
+	  <li><a href="method2-unet.html" data-nav="method2-unet"> U-Net</a></li>
           <li><a href="result.html" data-nav="result">Result</a></li>
           <li><a href="progress.html" data-nav="progress">Progress</a></li>
           <li><a href="project_topic_finalized_317.html" data-nav="Project Topic Finalized"> Project Topic Finalized</a></li>
@@ -44,21 +45,52 @@
         <div class="panel-inner panel-inner--wide">
           <!-- <span class="panel-index">04</span> -->
           <h1 class="panel-title">Result</h1>
-          <p class="panel-lead">Present quantitative metrics, spectrograms, or listening-test outcomes.</p>
-          <div class="panel-body">
-            <p>Tables, plots, and before/after audio embeds fit naturally in this section. Use your course’s reporting style as a guide.</p>
-            <div class="stat-row" role="group" aria-label="Example metrics">
-              <div class="stat-card">
-                <span class="stat-value" data-target="12">0</span>
-                <span class="stat-label">dB improvement (example)</span>
-              </div>
-              <div class="stat-card">
-                <span class="stat-value stat-value--plain">48 kHz</span>
-                <span class="stat-label">Sample rate (example)</span>
-              </div>
-            </div>
-          </div>
+          <p class="panel-lead">Comparing the denoising results from our basic filtering and U-Net methods</p>
+	<div class="content-wrap">
+           <h2 class="section-grid-heading">Comparing Results of Audio Files found Online</h2>
+		<div class="section-text">
+		<p> Here is an example clean audio track from the online repository used (source).</p> 
+		<h4>string_track002025 (clean) </h4>
+                  <audio controls>
+                    <source src="string_track002025.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                  </audio>
+		<p> Here is a random segment of that file noised by the people chattering sound.</p>
+		<h4>string_track002025 (noised)</h4>
+		  <audio controls>
+		    <source src="string_track002025_mixed.wav" type="audio/wav">
+		    Your browser does not support the audio element.
+		  </audio>
+		<p> Here is that file denoised using our U-Net deep learning algorithm.</p>
+		<h4>string_track002025 (denoised by U-Net)</h4>
+		<audio controls>
+		  <source src="denoised_string_track002025.wav" type="audio/wav">
+		   Your browser does not support the audio element.
+		  </audio>
+		<p> TODO: add filtered signal using Harry's pipeline. Overall, the U-Net performed really well as it eliminated the chattering noise almost entirely. (add other stats here, like loss, if applicable). 
         </div>
+        </div>
+       </div>
+
+	<div class="content-wrap">
+	 <h2 class="section-grid-heading">Comparing Results of Audio Files Recorded Ourselves</h2>
+		<div class = "section-text"> </h4>
+		<p> We also recorded audio files ourselves, and wanted to see how our models performed on those. For a self-recorded clip of playing a bellset with the air conditioning in the background, the U-Net actually did not perform as well as it did on files from the online repository. We are still exploring reasons as to why, but we believe it may be due to differnces in the AC noise in the self-recorded clip and the AC noise that was used during training. Here are the audio files.</p>
+	        <div class="audio-section">
+                  <h4>Original Clip of Bellset & AC</h4>
+                  <audio controls>
+                    <source src="EECS351_bells4.mp3" type="audio/mp3">
+                    Your browser does not support the audio element.
+                  </audio>
+		<div class="audio-section">
+                  <h4>Denoised Clip of Bellset & AC (U-Net)</h4>
+                  <audio controls>
+                    <source src="bells4_denoise.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                  </audio>
+		<p> In the U-Net denoised clip, the air conditioning noise is much quieter, however the sound of the mallets hitting the keys is not as "sharp" as the original clip. We can hear some echo.</p> 
+	 </div>
+	<div>
       </section>
     </div>
   </main>
