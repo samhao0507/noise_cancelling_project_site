@@ -22,7 +22,7 @@
           <!-- <li><a href="introduction.html" data-nav="introduction">Intro</a></li> -->
           <li><a href="data.html" data-nav="data">Data</a></li>
           <li><a href="method1-basicfiltering.html" data-nav="method1-basicfiltering">Basic Filtering</a></li>
-	  <li><a href="method2-unet.html" data-nav="method2-unet"> U-Net</a></li>
+	        <li><a href="method2-unet.html" data-nav="method2-unet"> U-Net</a></li>
           <li><a href="result.html" data-nav="result">Result</a></li>
           <li><a href="progress.html" data-nav="progress">Progress Report</a></li>
           <li><a href="project_topic_finalized_317.html" data-nav="Project Topic Finalized"> Project Topic Finalized</a></li>
@@ -47,12 +47,56 @@
           <h1 class="panel-title">Data</h1>
           <p class="panel-lead">Summarize datasets, recording conditions, sampling rates, and any preprocessing.</p>
           <div class="panel-body">
+            <p>Our dataset includes:</p>
             <ul class="info-list">
-              <li><strong>Source</strong> — Where recordings or synthetic data come from.</li>
-              <li><strong>Format</strong> — Channels, duration, file types.</li>
-              <li><strong>Splits</strong> — Train / validation / test if applicable.</li>
+              <li><strong>Mixed noisy audios recorded by ourselves</strong> — Bells + AC, Piano + people speaking, Guzheng + people chattering, Vinyl turntable + mechanical tweaking sound </li>
+              <li><strong>Clean audio files</strong> — string: violin, viola, cello.</li>
+              <li><strong>Noise audio files</strong> — people chattering, auto, combined, recorded people speaking</li>
             </ul>
-            <p>Add figures or embedded audio players here when you have assets.</p>
+            <div class="audio-section">
+                  <h4>Mixed noisy audios: Bellset & AC</h4>
+                  <img src="data_bells4.jpg" alt="Data: waveform plots" class="data-dataset-recorded" width="800" height="800">
+                  <audio controls>
+                    <source src="EECS351_bells4.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                  </audio>
+            <div class="audio-section">
+                  <h4>Clean audio files: string</h4>
+                  <img src="data_string2001.jpg" alt="Data: waveform plots" class="data-dataset-clean" width="800" height="800">
+                  <audio controls>
+                    <source src="string_track002001.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                  </audio>
+            <div class="audio-section">
+                  <h4>Noise audio files: people chattering</h4>
+                  <img src="data_peoplechat.jpg" alt="Data: waveform plots" class="data-dataset-noise" width="800" height="800">
+                  <audio controls>
+                    <source src="people _ 1557836294058.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                  </audio>
+            <div class="audio-section">
+                  <h4>Noise audio files: recorded people speaking</h4>
+                  <img src="data_peoplespeaking.jpg" alt="Data: waveform plots" class="data-dataset-noise" width="800" height="800">
+                  <audio controls>
+                    <source src="Yoyo_reading2_seg0000.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                  </audio>
+            <p>Due to limited resources and uncontrollable factors, we could not record enough mixed audio for the training purpose. Therefore, we utilized the dataset we found online. We used a python script to mix the noise with the clean audios. For each clean track, the script picks one random noise clip from one or multiple separate noise source directories, combines two noises (skip this for one noise case), and overlays the combined noise onto the clean audio files at a randomly selected Signal-to-Noise Ratio (SNR). </p>
+            <div class="audio-section">
+                  <h4>Mixed with one noise</h4>
+                  <audio controls>
+                    <source src="string_track002001_peoplemixed.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                  </audio>
+                  <img src="dataFFT_comp_peoplemixed.jpg" alt="Data: FFT plots" class="data-dataset-mixed1" width="800" height="800">
+            <div class="audio-section">
+                  <h4>Mixed with two noises</h4>
+                  <audio controls>
+                    <source src="string_track002001_allmixed.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                  </audio>
+                  <img src="dataFFT_comp_allmixed.jpg" alt="Data: FFT plots" class="data-dataset-mixed1" width="800" height="800">
+            
           </div>
         </div>
       </section>
