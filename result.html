@@ -185,7 +185,7 @@
               <figcaption>FFT comparison between the U-Net result and the basic filtering result for the bellset + AC clip.</figcaption>
             </figure>
 
-            <p>In the U-Net denoised clip, the air conditioning noise is much quieter, however the sound of the mallets hitting the keys is not as "sharp" as the original clip. We can hear some echo.</p>
+            <p>In the U-Net denoised clip, the air conditioning noise is much quieter, however the sound of the mallets hitting the keys is not as "sharp" as the original clip. We can hear some echo. </p>
           </div>
 
           <div class="content-wrap">
@@ -247,7 +247,7 @@
 	      <source src="result_audio/string002018_ckpRECORDALL.wav", type="audio/wav">
 	      Your browser does not support the audio element.
 	    </audio>
-
+	    <p> To explore the real world case, here is a self-recording of a reader and a piano player.</p>
             <h4>piano_people (piano with reader)</h4>
             <audio controls>
               <source src="result_audio/piano_people.wav" type="audio/wav">
@@ -275,6 +275,13 @@
           </div>
 
         </div>
+
+	<div class="content-wrap">
+	 <h2 class="section-grid-heading">Key Takeaways</h2>
+           <p>Our group learned a lot from this project, and from the results in this section. One of the main trends in our results is that denoising using the U-Net algorithm is more effective than using basic filtering. For most of the clips in our validation set, U-Net did an admirable job, removing most of the desired noise. However, in some of the self-recorded clips (like in subsection 2 with Bells & AC), U-Net did not do as well.</p>
+	      Some ideas our group has is that the noise sources used during training is not the same as noise sources in 'real life', taking place in the self-recordings. It also could be possible that our training clips were too similar to each other, making our U-Net less effective in the general case. However, we are still happy with the results.</p>
+	</div>
+	
       </section>
     </div>
   </main>
