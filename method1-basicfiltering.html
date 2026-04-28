@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="css/fonts.css" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
-<body data-nav-page="method">
+<body data-nav-page="method1-basicfiltering">
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header" id="top">
@@ -22,7 +22,7 @@
           <!-- <li><a href="introduction.html" data-nav="introduction">Intro</a></li> -->
           <li><a href="data.html" data-nav="data">Data</a></li>
           <li><a href="method1-basicfiltering.html" data-nav="method1-basicfiltering">Basic Filtering</a></li>
-	  <li><a href="method2-unet.html" data-nav="method2-unet"> U-Net</a></li>
+          <li><a href="method2-unet.html" data-nav="method2-unet"> U-Net</a></li>
           <li><a href="result.html" data-nav="result">Result</a></li>
           <li><a href="progress.html" data-nav="progress">Progress Report</a></li>
           <li><a href="project_topic_finalized_317.html" data-nav="Project Topic Finalized"> Project Topic Finalized</a></li>
@@ -43,17 +43,79 @@
       </nav>
       <section class="panel">
         <div class="panel-inner panel-inner--wide">
-          <!-- <span class="panel-index">03</span> -->
           <h1 class="panel-title">Basic Filtering</h1>
-          <p class="panel-lead">Put the filter pipeline in here. I think it works best to have Harry's pipeline here and then Ronald's filter
-				tryout in the Project Topic Finalized Checkpoint</p>
+          <p class="panel-lead">
+            As a traditional baseline, we implemented a multi-stage audio denoising pipeline
+            using standard digital signal processing techniques before comparing against the
+            CNN-based approach.
+          </p>
           <div class="panel-body">
-            <p>Walk through the algorithm or architecture step by step. A numbered list or simple diagram often reads well here.</p>
+            <p>
+              The goal of this method is to reduce unwanted background noise in a more
+              interpretable way and provide a meaningful reference point for evaluating
+              how much improvement the learning-based model gives.
+            </p>
+
             <ol class="step-list">
-              <li>Step one of your processing chain.</li>
-              <li>Step two—parameters and design choices.</li>
-              <li>Step three—how you evaluate quality.</li>
+              <li>
+                <strong>DC removal.</strong> We first subtract the mean of the signal to remove
+                DC offset. This prevents an artificial spike near 0 Hz in the frequency
+                spectrum and makes later filtering more stable.
+              </li>
+              <li>
+                <strong>Band-pass filtering.</strong> We then apply a 4th-order Butterworth
+                band-pass filter from <strong>80 Hz to 3800 Hz</strong>. This keeps most of the
+                main speech-related frequency range while suppressing low-frequency rumble
+                and high-frequency noise.
+              </li>
+              <li>
+                <strong>Notch filtering.</strong> If needed, we also apply narrow band-stop
+                filters centered at <strong>60 Hz</strong> and <strong>120 Hz</strong> to reduce
+                electrical hum and its harmonic.
+              </li>
+              <li>
+                <strong>Wavelet denoising.</strong> After filtering, we apply wavelet denoising
+                using the <strong>sym4</strong> wavelet with decomposition level
+                <strong>5</strong>. This step suppresses smaller noisy components while preserving
+                more structure than simple smoothing.
+              </li>
+              <li>
+                <strong>Soft adaptive attenuation.</strong> Finally, the signal is divided into
+                short overlapping frames, and lower-energy frames are attenuated more strongly
+                than higher-energy frames. This helps reduce weaker background mumbling or
+                residual noise in quieter regions without the abrupt effect of a hard gate.
+              </li>
             </ol>
+
+            <p>
+              We chose this pipeline because it is more substantial than a single high-pass
+              filter, but still fully traditional and easier to interpret than a deep
+              learning model.
+            </p>
+
+            <p>
+              In particular, the <strong>80–3800 Hz</strong> band-pass range is intended to
+              preserve the most important part of the speech-related frequency band while
+              reducing obvious low-frequency rumble and high-frequency interference.
+              The optional notch filters are included to handle common recording hum,
+              while wavelet denoising serves as a middle ground between simple filtering
+              and more advanced time-frequency denoising methods.
+            </p>
+
+            <p>
+              To evaluate this baseline, we compare the noisy and denoised outputs in both
+              the time domain and the frequency domain. In the time domain, waveform plots
+              show the overall change in signal amplitude and structure. In the frequency
+              domain, FFT plots show that the noisy signal generally has larger magnitude
+              than the filtered signal across many frequencies, indicating suppression of
+              excess frequency content after denoising.
+            </p>
+
+            <p>
+              This basic filtering pipeline serves as our traditional baseline, and later
+              its performance can be compared directly against the CNN-based denoiser to
+              see how much improvement is gained from the learning-based method.
+            </p>
           </div>
         </div>
       </section>
