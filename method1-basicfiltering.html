@@ -86,7 +86,12 @@
                 residual noise in quieter regions without the abrupt effect of a hard gate.
               </li>
             </ol>
-
+            <div class="introduction_graph">
+              <figure style="margin-top: 2rem;">
+                <img src="basic_filtering_pipeline_diagram.png" alt="Basic filtering pipeline diagram" style="width:100%; max-width:1100px; height:auto;">
+                <figcaption>Step-by-step overview of the traditional basic filtering pipeline.</figcaption>
+              </figure>
+            </div>
             <p>
               We chose this pipeline because it is more substantial than a single high-pass
               filter, but still fully traditional and easier to interpret than a deep
@@ -113,12 +118,12 @@
     
             <div class="comparison-graphs">
               <figure>
-                <img src="images/basic_filter_time.png" alt="Waveform comparison between noisy and denoised audio" style="width:100%; max-width:800px; height:auto;">
+                <img src="basic_filter_time.png" alt="Waveform comparison between noisy and denoised audio" style="width:100%; max-width:800px; height:auto;">
                 <figcaption>Time-domain waveform comparison of the noisy and denoised signals.</figcaption>
               </figure>
             
               <figure style="margin-top: 2rem;">
-                <img src="images/basic_filter_freq.png" alt="FFT comparison between noisy and denoised audio" style="width:100%; max-width:800px; height:auto;">
+                <img src="basic_filter_freq.png" alt="FFT comparison between noisy and denoised audio" style="width:100%; max-width:800px; height:auto;">
                 <figcaption>Frequency-domain FFT comparison showing reduced magnitude after filtering.</figcaption>
               </figure>
             </div>
