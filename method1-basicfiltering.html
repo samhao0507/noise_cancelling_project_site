@@ -110,7 +110,18 @@
               than the filtered signal across many frequencies, indicating suppression of
               excess frequency content after denoising.
             </p>
-
+    
+            <div class="comparison-graphs">
+              <figure>
+                <img src="images/basic_filter_time.png" alt="Waveform comparison between noisy and denoised audio" style="width:100%; max-width:800px; height:auto;">
+                <figcaption>Time-domain waveform comparison of the noisy and denoised signals.</figcaption>
+              </figure>
+            
+              <figure style="margin-top: 2rem;">
+                <img src="images/basic_filter_freq.png" alt="FFT comparison between noisy and denoised audio" style="width:100%; max-width:800px; height:auto;">
+                <figcaption>Frequency-domain FFT comparison showing reduced magnitude after filtering.</figcaption>
+              </figure>
+            </div>
             <p>
               This basic filtering pipeline serves as our traditional baseline, and later
               its performance can be compared directly against the CNN-based denoiser to
