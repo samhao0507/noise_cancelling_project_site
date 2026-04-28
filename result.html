@@ -45,11 +45,15 @@
         <div class="panel-inner panel-inner--wide">
           <!-- <span class="panel-index">04</span> -->
           <h1 class="panel-title">Result</h1>
-          <p class="panel-lead">Comparing the denoising results from our basic filtering and U-Net methods</p>
+          <p class="panel-lead">In this section, we present the results of our U-Net and Basic Filtering methods working with four different noise types. The noise types are (1) people chattering, (2) air conditioning, (3) people chattering & air conditioning, and (4) people reading </p>
 	<div class="content-wrap">
-           <h2 class="section-grid-heading">Comparing Results of Audio Files found Online</h2>
+           <h2 class="section-grid-heading">Noise #1: People Chattering</h2>
+		<p> People chattering was actually the first noise we worked with. For that noise, used the online repository</p>
+		<p> https://depositonce.tu-berlin.de/items/aa9f01e1-3eb7-44f9-a5c8-fe1b4c858024</p>
+		<p> For training & validating the U-Net, we used instrumental files from the online repo</p>
+		<p> https://magenta.withgoogle.com/datasets/cocochorales</p> 
 		<div class="section-text">
-		<p> Here is an example clean audio track from the online repository used (source).</p> 
+		<p> Here is an example clean audio track from the online repository used.</p> 
 		<h4>string_track002025 (clean) </h4>
                   <audio controls>
                     <source src="string_track002025.wav" type="audio/wav">
@@ -67,15 +71,41 @@
 		  <source src="denoised_string_track002025.wav" type="audio/wav">
 		   Your browser does not support the audio element.
 		  </audio>
-		<p> TODO: add filtered signal using Harry's pipeline. Overall, the U-Net performed really well as it eliminated the chattering noise almost entirely. (add other stats here, like loss, if applicable). 
+		<p> Overall, the U-Net performed really well as it eliminated the chattering noise almost entirely. We were also insterested on how our models would perform on self-recorded clips, like this clip of a Chinese Guzheng. Here is a audio file of the Guzheng and people talking in the background.</p>
+		<h4> Guzheng1 (noisy)</h4>
+		<audio controls>
+		  <source src="result_audio/Guzheng1.wav" type="audio/wav">
+		  Your browser does not support the audio element.
+		</audio>
+		<p>And here is that file denoised by our U-Net.</p>
+		<h4> Guzheng1_denoised (denoised by U-Net)</h4>
+		<audio controls>
+		  <source src="result_audio/Guzheng1_denoised.wav" type="audio/wav">
+		  Your browser does not support the audio element.
+		</audio>
         </div>
         </div>
        </div>
 
 	<div class="content-wrap">
-	 <h2 class="section-grid-heading">Comparing Results of Audio Files Recorded Ourselves</h2>
-		<div class = "section-text"> </h4>
-		<p> We also recorded audio files ourselves, and wanted to see how our models performed on those. For a self-recorded clip of playing a bellset with the air conditioning in the background, the U-Net actually did not perform as well as it did on files from the online repository. We are still exploring reasons as to why, but we believe it may be due to differnces in the AC noise in the self-recorded clip and the AC noise that was used during training. Here are the audio files.</p>
+	 <h2 class="section-grid-heading">Noise #2: Air Conditioning</h2>
+		<p> The next audio source we tackled was air conditioning. We'll start by presenting the results of an audio recording in the instrumental music validation set above.</p>
+		<h4> string_track002011 (clean)</h4>
+		<audio controls>
+		  <source src="result_audio/string_track002011.wav", type="audio/wav">
+		  Your browser does not support the audio element.
+		</audio>
+		<h4> string_track002011_mixed_AC (noised with AC)</h4>
+ 		<audio controls> 		
+		   <source src="result_audio/string_track002011_mixed_AC.wav" type="audio/wav">
+		   Your browser does not support the audio element.
+		</audio>
+		<h4> string002011_ckpAC (denoised with U-Net)</h4>
+		<audio controls>
+		   <source src="result_audio/string002011_ckpAC.wav" type="audio/wav">
+		   Your browser does not support the audio element.
+		</audio> 
+		<p> Like the last section, we also tested our models with self-recorded clips. This time, it was a clip of Ronald playing a bellset with air conditioning in the background.</p>
 	        <div class="audio-section">
                   <h4>Original Clip of Bellset & AC</h4>
                   <audio controls>
@@ -90,7 +120,41 @@
                   </audio>
 		<p> In the U-Net denoised clip, the air conditioning noise is much quieter, however the sound of the mallets hitting the keys is not as "sharp" as the original clip. We can hear some echo.</p> 
 	 </div>
-	<div>
+	</div>
+       </div>
+
+	<div class="content-wrap">
+	 <h2 class="section-grid-heading">Noise #3: People Chattering & Air Conditioning</h2>
+	   <p> What if audio files had TWO types of noise instead of just one? Could our model still work? That is what we are investigating in this section. We'll again start with string_track002011 from the validation set.</p>
+	   <h4> string_track002011 (clean)</h4>
+	   <audio controls>
+	     <source src="result_audio/string_track002011.wav" type="audio/wav">
+             Your browser does not support the audio element.
+           </audio>
+	   <h4> string_track002011_mixed_all (both noises applied)</h4>
+	   <audio controls>
+	     <source src="result_audio/string_track002011_mixed_recordall.wav" type="audio/wav">
+	   </audio>
+           <h4> string_track002011ckpALL (denoised by U-Net)</h4>
+	   <audio controls>
+	     <source src="result_audio/string002011_ckpALL.wav", type="audio/wav">
+	   </audio>
+	   <p> The U-Net performed pretty well at elimiating both noises. We can hear some people chattering at the beginning, but nothing too significant. We also tested the removal of these two noises with the Guzheng. (come back)</p>
+	</div>
+
+	<div class="content-wrap">
+	 <h2 class="section-grid-heading"> Noise #4: People Reading</h2>
+	   <p> The last noise source we explored was a clip of Yoyo reading a paragraph while Harry was playing piano in the background.</p>
+	   <h4> piano_people (piano with reader)</h4>
+	   <audio controls>
+	     <source src="result_audio/piano_people.wav", type="audio/wav">
+	   </audio> 
+	   <h4> piano_people_denoised (denoised by U-Net)</h4>
+	   <audio controls>
+	     <source src="result_audio/piano_people_denoised.wav", type="audio/wav">
+	     </audio>
+	</div>
+
       </section>
     </div>
   </main>
