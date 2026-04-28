@@ -90,16 +90,16 @@
 
               <p>Overall, the U-Net performed really well as it eliminated the chattering noise almost entirely. We were also insterested on how our models would perform on self-recorded clips, like this clip of a Chinese Guzheng. Here is a audio file of the Guzheng and people talking in the background.</p>
 
-              <h4>Guzheng1 (noisy)</h4>
+              <h4>Guzheng1_new (noisy)</h4>
               <audio controls>
-                <source src="result_audio/Guzheng1.wav" type="audio/wav">
+                <source src="result_audio/Guzheng1_new.wav" type="audio/wav">
                 Your browser does not support the audio element.
               </audio>
 
               <p>And here is that file denoised by our U-Net.</p>
-              <h4>Guzheng1_denoised (denoised by U-Net)</h4>
+              <h4>Guzheng1_ckpSAM (denoised by U-Net)</h4>
               <audio controls>
-                <source src="result_audio/Guzheng1_denoised.wav" type="audio/wav">
+                <source src="result_audio/Guzheng1_ckpSAM.wav" type="audio/wav">
                 Your browser does not support the audio element.
               </audio>
 
@@ -228,7 +228,25 @@
 
           <div class="content-wrap">
             <h2 class="section-grid-heading">Noise #4: People Reading</h2>
-            <p>The last noise source we explored was a clip of Yoyo reading a paragraph while Harry was playing piano in the background.</p>
+            <p>The last noise source we explored was of someone reading in the background. Could this be different than people chattering? We'll start with a recording from the validation set, and then move into a self-recorded example.</p>
+
+	    <h4>string_track002018 (clean)</h4>
+	    <audio controls>
+	       <source src="result_audio/string_track002018.wav" type="audio/wav">
+	       Your browser does not support the audio element.
+	    </audio>
+
+	    <h4> string_track002018_mixed_recordall (noised with people reading)</h4>
+	    <audio controls>
+	      <source src="result_audio/string_track002018_mixed_recodall.wav", type="audio/wav">
+	      Your browser does not support the audio element.  
+	    </audio>
+
+	    <h4> string_002018_ckpRECORDALL (denoised by U-Net)</h4>
+	    <audio controls>
+	      <source src="result_audio/string002018_ckpRECORDALL.wav", type="audio/wav">
+	      Your browser does not support the audio element.
+	    </audio>
 
             <h4>piano_people (piano with reader)</h4>
             <audio controls>
