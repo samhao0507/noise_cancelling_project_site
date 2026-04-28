@@ -22,7 +22,7 @@
           <!-- <li><a href="introduction.html" data-nav="introduction">Intro</a></li> -->
           <li><a href="data.html" data-nav="data">Data</a></li>
           <li><a href="method1-basicfiltering.html" data-nav="method1-basicfiltering">Basic Filtering</a></li>
-	  <li><a href="method2-unet.html" data-nav="method2-unet"> U-Net</a></li>
+          <li><a href="method2-unet.html" data-nav="method2-unet"> U-Net</a></li>
           <li><a href="result.html" data-nav="result">Result</a></li>
           <li><a href="progress.html" data-nav="progress">Progress Report</a></li>
           <li><a href="project_topic_finalized_317.html" data-nav="Project Topic Finalized"> Project Topic Finalized</a></li>
@@ -43,118 +43,220 @@
       </nav>
       <section class="panel panel--alt" id="result">
         <div class="panel-inner panel-inner--wide">
-          <!-- <span class="panel-index">04</span> -->
           <h1 class="panel-title">Result</h1>
           <p class="panel-lead">In this section, we present the results of our U-Net and Basic Filtering methods working with four different noise types. The noise types are (1) people chattering, (2) air conditioning, (3) people chattering & air conditioning, and (4) people reading </p>
-	<div class="content-wrap">
-           <h2 class="section-grid-heading">Noise #1: People Chattering</h2>
-		<p> People chattering was actually the first noise we worked with. For that noise, used the online repository</p>
-		<p> https://depositonce.tu-berlin.de/items/aa9f01e1-3eb7-44f9-a5c8-fe1b4c858024</p>
-		<p> For training & validating the U-Net, we used instrumental files from the online repo</p>
-		<p> https://magenta.withgoogle.com/datasets/cocochorales</p> 
-		<div class="section-text">
-		<p> Here is an example clean audio track from the online repository used.</p> 
-		<h4>string_track002025 (clean) </h4>
-                  <audio controls>
-                    <source src="string_track002025.wav" type="audio/wav">
-                    Your browser does not support the audio element.
-                  </audio>
-		<p> Here is a random segment of that file noised by the people chattering sound.</p>
-		<h4>string_track002025 (noised)</h4>
-		  <audio controls>
-		    <source src="string_track002025_mixed.wav" type="audio/wav">
-		    Your browser does not support the audio element.
-		  </audio>
-		<p> Here is that file denoised using our U-Net deep learning algorithm.</p>
-		<h4>string_track002025 (denoised by U-Net)</h4>
-		<audio controls>
-		  <source src="denoised_string_track002025.wav" type="audio/wav">
-		   Your browser does not support the audio element.
-		  </audio>
-		<p> Overall, the U-Net performed really well as it eliminated the chattering noise almost entirely. We were also insterested on how our models would perform on self-recorded clips, like this clip of a Chinese Guzheng. Here is a audio file of the Guzheng and people talking in the background.</p>
-		<h4> Guzheng1 (noisy)</h4>
-		<audio controls>
-		  <source src="result_audio/Guzheng1.wav" type="audio/wav">
-		  Your browser does not support the audio element.
-		</audio>
-		<p>And here is that file denoised by our U-Net.</p>
-		<h4> Guzheng1_denoised (denoised by U-Net)</h4>
-		<audio controls>
-		  <source src="result_audio/Guzheng1_denoised.wav" type="audio/wav">
-		  Your browser does not support the audio element.
-		</audio>
+
+          <div class="content-wrap">
+            <h2 class="section-grid-heading">Noise #1: People Chattering</h2>
+            <p>People chattering was actually the first noise we worked with. For that noise, used the online repository</p>
+            <p>https://depositonce.tu-berlin.de/items/aa9f01e1-3eb7-44f9-a5c8-fe1b4c858024</p>
+            <p>For training & validating the U-Net, we used instrumental files from the online repo</p>
+            <p>https://magenta.withgoogle.com/datasets/cocochorales</p>
+
+            <div class="section-text">
+              <p>Here is an example clean audio track from the online repository used.</p>
+              <h4>string_track002025 (clean)</h4>
+              <audio controls>
+                <source src="string_track002025.wav" type="audio/wav">
+                Your browser does not support the audio element.
+              </audio>
+
+              <p>Here is a random segment of that file noised by the people chattering sound.</p>
+              <h4>string_track002025 (noised)</h4>
+              <audio controls>
+                <source src="string_track002025_mixed.wav" type="audio/wav">
+                Your browser does not support the audio element.
+              </audio>
+
+              <p>Here is that file denoised using our U-Net deep learning algorithm.</p>
+              <h4>string_track002025 (denoised by U-Net)</h4>
+              <audio controls>
+                <source src="denoised_string_track002025.wav" type="audio/wav">
+                Your browser does not support the audio element.
+              </audio>
+
+              <p>Below is the same noisy clip denoised by our basic filtering pipeline for comparison.</p>
+              <h4>string_track002025 (denoised by Basic Filtering)</h4>
+              <audio controls>
+                <source src="result_audio/filtered_string_track002025_mixed.wav" type="audio/wav">
+                Your browser does not support the audio element.
+              </audio>
+
+              <p>The FFT plot below compares the U-Net output and the filtered output for this same clip. This helps visualize how the traditional filtering pipeline and the learned model suppress frequency content differently.</p>
+              <figure style="margin-top: 1rem;">
+                <img src="fft_comparison_outputs/fft_full_string_track002025_mixed.png" alt="FFT comparison for string_track002025 mixed audio" style="width:100%; max-width:850px; height:auto;">
+                <figcaption>FFT comparison between the U-Net result and the basic filtering result for string_track002025.</figcaption>
+              </figure>
+
+              <p>Overall, the U-Net performed really well as it eliminated the chattering noise almost entirely. We were also insterested on how our models would perform on self-recorded clips, like this clip of a Chinese Guzheng. Here is a audio file of the Guzheng and people talking in the background.</p>
+
+              <h4>Guzheng1 (noisy)</h4>
+              <audio controls>
+                <source src="result_audio/Guzheng1.wav" type="audio/wav">
+                Your browser does not support the audio element.
+              </audio>
+
+              <p>And here is that file denoised by our U-Net.</p>
+              <h4>Guzheng1_denoised (denoised by U-Net)</h4>
+              <audio controls>
+                <source src="result_audio/Guzheng1_denoised.wav" type="audio/wav">
+                Your browser does not support the audio element.
+              </audio>
+
+              <p>We also denoised the same Guzheng recording using our basic filtering pipeline.</p>
+              <h4>Guzheng1_filtered (denoised by Basic Filtering)</h4>
+              <audio controls>
+                <source src="result_audio/filtered_Guzheng1.wav" type="audio/wav">
+                Your browser does not support the audio element.
+              </audio>
+
+              <p>The FFT comparison below shows the difference between the filtered result and the U-Net result on this self-recorded Guzheng clip.</p>
+              <figure style="margin-top: 1rem;">
+                <img src="fft_comparison_outputs/fft_full_Guzheng1.png" alt="FFT comparison for Guzheng1 audio" style="width:100%; max-width:850px; height:auto;">
+                <figcaption>FFT comparison between the U-Net result and the basic filtering result for Guzheng1.</figcaption>
+              </figure>
+            </div>
+          </div>
+
+          <div class="content-wrap">
+            <h2 class="section-grid-heading">Noise #2: Air Conditioning</h2>
+            <p>The next audio source we tackled was air conditioning. We'll start by presenting the results of an audio recording in the instrumental music validation set above.</p>
+
+            <h4>string_track002011 (clean)</h4>
+            <audio controls>
+              <source src="result_audio/string_track002011.wav" type="audio/wav">
+              Your browser does not support the audio element.
+            </audio>
+
+            <h4>string_track002011_mixed_AC (noised with AC)</h4>
+            <audio controls>
+              <source src="result_audio/string_track002011_mixed_AC.wav" type="audio/wav">
+              Your browser does not support the audio element.
+            </audio>
+
+            <h4>string002011_ckpAC (denoised with U-Net)</h4>
+            <audio controls>
+              <source src="result_audio/string002011_ckpAC.wav" type="audio/wav">
+              Your browser does not support the audio element.
+            </audio>
+
+            <p>Below is the same AC-noised clip denoised by the basic filtering pipeline.</p>
+            <h4>string_track002011_mixed_AC (denoised by Basic Filtering)</h4>
+            <audio controls>
+              <source src="result_audio/filtered_string_track002011_mixed_AC.wav" type="audio/wav">
+              Your browser does not support the audio element.
+            </audio>
+
+            <p>The FFT plot below compares the filtered result and the U-Net result for the same AC-noised audio segment.</p>
+            <figure style="margin-top: 1rem;">
+              <img src="fft_comparison_outputs/fft_full_string_track002011_mixed_AC.png" alt="FFT comparison for string_track002011 mixed AC audio" style="width:100%; max-width:850px; height:auto;">
+              <figcaption>FFT comparison between the U-Net result and the basic filtering result for the AC-noised validation clip.</figcaption>
+            </figure>
+
+            <p>Like the last section, we also tested our models with self-recorded clips. This time, it was a clip of Ronald playing a bellset with air conditioning in the background.</p>
+
+            <div class="audio-section">
+              <h4>Original Clip of Bellset & AC</h4>
+              <audio controls>
+                <source src="EECS351_bells4.mp3" type="audio/mp3">
+                Your browser does not support the audio element.
+              </audio>
+            </div>
+
+            <div class="audio-section">
+              <h4>Denoised Clip of Bellset & AC (U-Net)</h4>
+              <audio controls>
+                <source src="bells4_denoise.wav" type="audio/wav">
+                Your browser does not support the audio element.
+              </audio>
+            </div>
+
+            <div class="audio-section">
+              <h4>Denoised Clip of Bellset & AC (Basic Filtering)</h4>
+              <audio controls>
+                <source src="result_audio/filtered_EECS351_bells4.wav" type="audio/wav">
+                Your browser does not support the audio element.
+              </audio>
+            </div>
+
+            <p>The FFT comparison below helps compare how the traditional filter pipeline and the U-Net denoiser shape the frequency content of the same bellset recording.</p>
+            <figure style="margin-top: 1rem;">
+              <img src="fft_comparison_outputs/fft_full_EECS351_bells4.png" alt="FFT comparison for EECS351 bells4 audio" style="width:100%; max-width:850px; height:auto;">
+              <figcaption>FFT comparison between the U-Net result and the basic filtering result for the bellset + AC clip.</figcaption>
+            </figure>
+
+            <p>In the U-Net denoised clip, the air conditioning noise is much quieter, however the sound of the mallets hitting the keys is not as "sharp" as the original clip. We can hear some echo.</p>
+          </div>
+
+          <div class="content-wrap">
+            <h2 class="section-grid-heading">Noise #3: People Chattering & Air Conditioning</h2>
+            <p>What if audio files had TWO types of noise instead of just one? Could our model still work? That is what we are investigating in this section. We'll again start with string_track002011 from the validation set.</p>
+
+            <h4>string_track002011 (clean)</h4>
+            <audio controls>
+              <source src="result_audio/string_track002011.wav" type="audio/wav">
+              Your browser does not support the audio element.
+            </audio>
+
+            <h4>string_track002011_mixed_all (both noises applied)</h4>
+            <audio controls>
+              <source src="result_audio/string_track002011_mixed_recordall.wav" type="audio/wav">
+              Your browser does not support the audio element.
+            </audio>
+
+            <h4>string_track002011ckpALL (denoised by U-Net)</h4>
+            <audio controls>
+              <source src="result_audio/string002011_ckpALL.wav" type="audio/wav">
+              Your browser does not support the audio element.
+            </audio>
+
+            <p>We also applied the basic filtering pipeline to the same double-noise clip.</p>
+            <h4>string_track002011_mixed_all (denoised by Basic Filtering)</h4>
+            <audio controls>
+              <source src="result_audio/filtered_string_track002011_mixed_recordall.wav" type="audio/wav">
+              Your browser does not support the audio element.
+            </audio>
+
+            <p>The FFT figure below compares the filtered output and the U-Net output for the two-noise case. This gives a direct visual comparison of how well each method suppresses the combined interference.</p>
+            <figure style="margin-top: 1rem;">
+              <img src="fft_comparison_outputs/fft_full_string_track002011_mixed_recordall.png" alt="FFT comparison for string_track002011 mixed with all noises" style="width:100%; max-width:850px; height:auto;">
+              <figcaption>FFT comparison between the U-Net result and the basic filtering result for the clip with people chattering and air conditioning.</figcaption>
+            </figure>
+
+            <p>The U-Net performed pretty well at elimiating both noises. We can hear some people chattering at the beginning, but nothing too significant. We also tested the removal of these two noises with the Guzheng. (come back)</p>
+          </div>
+
+          <div class="content-wrap">
+            <h2 class="section-grid-heading">Noise #4: People Reading</h2>
+            <p>The last noise source we explored was a clip of Yoyo reading a paragraph while Harry was playing piano in the background.</p>
+
+            <h4>piano_people (piano with reader)</h4>
+            <audio controls>
+              <source src="result_audio/piano_people.wav" type="audio/wav">
+              Your browser does not support the audio element.
+            </audio>
+
+            <h4>piano_people_denoised (denoised by U-Net)</h4>
+            <audio controls>
+              <source src="result_audio/piano_people_denoised.wav" type="audio/wav">
+              Your browser does not support the audio element.
+            </audio>
+
+            <p>Below is the same piano-and-reading clip processed by the basic filtering pipeline.</p>
+            <h4>piano_people_filtered (denoised by Basic Filtering)</h4>
+            <audio controls>
+              <source src="result_audio/filtered_piano_people.wav" type="audio/wav">
+              Your browser does not support the audio element.
+            </audio>
+
+            <p>The FFT figure below compares the filtered result and the U-Net result on this recording, giving a direct frequency-domain comparison between the two denoising approaches.</p>
+            <figure style="margin-top: 1rem;">
+              <img src="fft_comparison_outputs/fft_full_piano_people.png" alt="FFT comparison for piano people audio" style="width:100%; max-width:850px; height:auto;">
+              <figcaption>FFT comparison between the U-Net result and the basic filtering result for the piano + reading clip.</figcaption>
+            </figure>
+          </div>
+
         </div>
-        </div>
-       </div>
-
-	<div class="content-wrap">
-	 <h2 class="section-grid-heading">Noise #2: Air Conditioning</h2>
-		<p> The next audio source we tackled was air conditioning. We'll start by presenting the results of an audio recording in the instrumental music validation set above.</p>
-		<h4> string_track002011 (clean)</h4>
-		<audio controls>
-		  <source src="result_audio/string_track002011.wav", type="audio/wav">
-		  Your browser does not support the audio element.
-		</audio>
-		<h4> string_track002011_mixed_AC (noised with AC)</h4>
- 		<audio controls> 		
-		   <source src="result_audio/string_track002011_mixed_AC.wav" type="audio/wav">
-		   Your browser does not support the audio element.
-		</audio>
-		<h4> string002011_ckpAC (denoised with U-Net)</h4>
-		<audio controls>
-		   <source src="result_audio/string002011_ckpAC.wav" type="audio/wav">
-		   Your browser does not support the audio element.
-		</audio> 
-		<p> Like the last section, we also tested our models with self-recorded clips. This time, it was a clip of Ronald playing a bellset with air conditioning in the background.</p>
-	        <div class="audio-section">
-                  <h4>Original Clip of Bellset & AC</h4>
-                  <audio controls>
-                    <source src="EECS351_bells4.mp3" type="audio/mp3">
-                    Your browser does not support the audio element.
-                  </audio>
-		<div class="audio-section">
-                  <h4>Denoised Clip of Bellset & AC (U-Net)</h4>
-                  <audio controls>
-                    <source src="bells4_denoise.wav" type="audio/wav">
-                    Your browser does not support the audio element.
-                  </audio>
-		<p> In the U-Net denoised clip, the air conditioning noise is much quieter, however the sound of the mallets hitting the keys is not as "sharp" as the original clip. We can hear some echo.</p> 
-	 </div>
-	</div>
-       </div>
-
-	<div class="content-wrap">
-	 <h2 class="section-grid-heading">Noise #3: People Chattering & Air Conditioning</h2>
-	   <p> What if audio files had TWO types of noise instead of just one? Could our model still work? That is what we are investigating in this section. We'll again start with string_track002011 from the validation set.</p>
-	   <h4> string_track002011 (clean)</h4>
-	   <audio controls>
-	     <source src="result_audio/string_track002011.wav" type="audio/wav">
-             Your browser does not support the audio element.
-           </audio>
-	   <h4> string_track002011_mixed_all (both noises applied)</h4>
-	   <audio controls>
-	     <source src="result_audio/string_track002011_mixed_recordall.wav" type="audio/wav">
-	   </audio>
-           <h4> string_track002011ckpALL (denoised by U-Net)</h4>
-	   <audio controls>
-	     <source src="result_audio/string002011_ckpALL.wav", type="audio/wav">
-	   </audio>
-	   <p> The U-Net performed pretty well at elimiating both noises. We can hear some people chattering at the beginning, but nothing too significant. We also tested the removal of these two noises with the Guzheng. (come back)</p>
-	</div>
-
-	<div class="content-wrap">
-	 <h2 class="section-grid-heading"> Noise #4: People Reading</h2>
-	   <p> The last noise source we explored was a clip of Yoyo reading a paragraph while Harry was playing piano in the background.</p>
-	   <h4> piano_people (piano with reader)</h4>
-	   <audio controls>
-	     <source src="result_audio/piano_people.wav", type="audio/wav">
-	   </audio> 
-	   <h4> piano_people_denoised (denoised by U-Net)</h4>
-	   <audio controls>
-	     <source src="result_audio/piano_people_denoised.wav", type="audio/wav">
-	     </audio>
-	</div>
-
       </section>
     </div>
   </main>
