@@ -143,7 +143,6 @@
               Your browser does not support the audio element.
             </audio>
 
-            <p>Below is the same AC-noised clip denoised by the basic filtering pipeline.</p>
             <h4>string_track002011_mixed_AC (denoised by Basic Filtering)</h4>
             <audio controls>
               <source src="result_audio/filtered_string_track002011_mixed_AC.wav" type="audio/wav">
@@ -205,7 +204,7 @@
 
             <h4>string_track002011_mixed_all (both noises applied)</h4>
             <audio controls>
-              <source src="result_audio/string_track002011_mixed_recordall.wav" type="audio/wav">
+              <source src="result_audio/string_track002011_mixed_all.wav" type="audio/wav">
               Your browser does not support the audio element.
             </audio>
 
@@ -215,16 +214,15 @@
               Your browser does not support the audio element.
             </audio>
 
-            <p>We also applied the basic filtering pipeline to the same double-noise clip.</p>
             <h4>string_track002011_mixed_all (denoised by Basic Filtering)</h4>
             <audio controls>
-              <source src="result_audio/filtered_string_track002011_mixed_recordall.wav" type="audio/wav">
+              <source src="result_audio/filtered_string_track002011_mixed_all.wav" type="audio/wav">
               Your browser does not support the audio element.
             </audio>
 
             <p>We compared both denoised version against the noisy string2011 audio files. And here are the results.</p>
-              <img src="images/fft_noisy_vs_denoised_string_track002011_mixed_recordall.png" alt="Results: 1FFT U-Net string2025" class="results-1-string-unet" width="400" height="300">
-              <img src="images/fft_noisy_vs_filtered_string_track002011_mixed_recordall.png" alt="Results: 1FFT U-Net" class="results-1-string-unet" width="400" height="300">
+              <img src="images/fft_noisy_vs_denoised_string_track002011_mixed_all.png" alt="Results: 1FFT U-Net string2025" class="results-1-string-unet" width="400" height="300">
+              <img src="images/fft_noisy_vs_filtered_string_track002011_mixed_all.png" alt="Results: 1FFT U-Net" class="results-1-string-unet" width="400" height="300">
               <br><p>The outputting effect is similar for the filtered version and U-Net version. The only difference is that U-Net did not eliminate the DC component from the FFT perspective.
               </p>
 
@@ -254,6 +252,7 @@
 	      <source src="result_audio/string002018_ckpRECORDALL.wav", type="audio/wav">
 	      Your browser does not support the audio element.
 	    </audio>
+
 	    <h4> filterd_string_002018_recordall (filtered)</h4>
 	    <audio controls>
 	      <source src="result_audio/filtered_string_track002018_mixed_recodall.wav", type="audio/wav">
@@ -278,7 +277,6 @@
               Your browser does not support the audio element.
             </audio>
 
-            <p>Below is the same piano-and-reading clip processed by the basic filtering pipeline.</p>
             <h4>piano_people_filtered (denoised by Basic Filtering)</h4>
             <audio controls>
               <source src="result_audio/filtered_piano_people.wav" type="audio/wav">
