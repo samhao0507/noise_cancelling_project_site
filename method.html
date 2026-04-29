@@ -24,8 +24,9 @@
           <li><a href="data.html" data-nav="data">Data</a></li>
           <li><a href="method.html" data-nav="method">Methods</a></li>
           <li><a href="result.html" data-nav="result">Result</a></li>
-          <li><a href="progress.html" data-nav="progress">Progress</a></li>
-          <li><a href="project_topic_finalized_317.html" data-nav="Project Topic Finalized"> Project Topic Finalized</a></li>
+          <li><a href="progress.html" data-nav="progress">Progress Report</a></li>
+          <li><a href="project_topic_finalized_317.html" data-nav="project-topic">Project Topic Finalized</a></li>
+          <li><a href="about_us.html" data-nav="about-us">About Us</a></li>
         </ul>
       </nav>
     </div>
@@ -147,10 +148,7 @@
             <div class="tab-panel" role="tabpanel" id="panel-unet" aria-labelledby="tab-unet" hidden data-panel="unet">
               <h2 class="sr-only">U-Net</h2>
               <div class="panel-body">
-                <p>After applying a simple filter to a few sample recordings, we started focusing on a deep learning approach that we hoped would yield better results. We used data from the online repo</p>
-                <p>https://magenta.withgoogle.com/datasets/cocochorales</p>
-                <p>that included audio files of instruments in an orchestra. We split these files into training and validation subsets. For a first noise source, we used data from the online repo</p>
-                <p><a href="https://depositonce.tu-berlin.de/items/aa9f01e1-3eb7-44f9-a5c8-fe1b4c858024" rel="noopener noreferrer">https://depositonce.tu-berlin.de/items/aa9f01e1-3eb7-44f9-a5c8-fe1b4c858024</a> that included files of people chattering. Our goal was to filter out the sound of people chattering from the instrumental audio files. Before passing data through our deep learning algorithm, we had to do some preprocessing steps. The first step was to apply noise randomly to the instrumental audio files, and take the STFT (short-time Fourier transform) of both the clean instrumental files and the noised instrumental files. Here is an example of a clean instrumental STFT spectrogram.</p>
+                <p>After applying a simple filter to a few sample recordings, we started focusing on a deep learning approach that we hoped would yield better results. We used data from the online repo <a href="https://magenta.withgoogle.com/datasets/cocochorales" rel="noopener noreferrer">https://magenta.withgoogle.com/datasets/cocochorales</a> that included audio files of instruments in an orchestra. We split these files into training and validation subsets. For a first noise source, we used data from the online repo <a href="https://depositonce.tu-berlin.de/items/aa9f01e1-3eb7-44f9-a5c8-fe1b4c858024" rel="noopener noreferrer">https://depositonce.tu-berlin.de/items/aa9f01e1-3eb7-44f9-a5c8-fe1b4c858024</a> that included files of people chattering. Our goal was to filter out the sound of people chattering from the instrumental audio files. Before passing data through our deep learning algorithm, we had to do some preprocessing steps. The first step was to apply noise randomly to the instrumental audio files, and take the STFT (short-time Fourier transform) of both the clean instrumental files and the noised instrumental files. Here is an example of a clean instrumental STFT spectrogram.</p>
                 <img src="EECS351_cleanSTFT_website.png" alt="clean STFT example" width="600" height="300">
                 <p>Here is a spectrogram of that same audio track with the people chattering noise applied.</p>
                 <img src="EECS351_noisySTFT_website.png" alt="noisy STFT example" width="600" height="300">
