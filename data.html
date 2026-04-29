@@ -46,7 +46,7 @@
         <div class="panel-inner panel-inner--wide">
           <!-- <span class="panel-index">02</span> -->
           <h1 class="panel-title">Data</h1>
-          <p class="panel-lead">Summarize datasets, recording conditions, sampling rates, and any preprocessing.</p>
+          <p class="panel-lead">Summarize datasets and any preprocessing.</p>
           <div class="panel-body">
             <p>Our dataset includes:</p>
             <ul class="info-list">
@@ -86,6 +86,7 @@
                     <source src="Yoyo_reading2_seg0000.wav" type="audio/wav">
                     Your browser does not support the audio element.
                   </audio>
+            <h3>Preprocessing</h3>
             <p>Due to limited resources and uncontrollable factors, we could not record enough mixed audio for the training purpose. Therefore, we utilized the dataset we found online. We used a python script to mix the noise with the clean audios. For each clean track, the script picks one random noise clip from one or multiple separate noise source directories, combines two noises (skip this for one noise case), and overlays the combined noise onto the clean audio files at a randomly selected Signal-to-Noise Ratio (SNR). </p>
             <div class="audio-section">
                   <h4>Mixed with one noise</h4>
