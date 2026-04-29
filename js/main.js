@@ -9,8 +9,6 @@
   const sections = document.querySelectorAll("[data-section-id]");
   const scrollProgress = document.getElementById("scroll-progress");
   const toTop = document.getElementById("to-top");
-  const tabButtons = document.querySelectorAll(".tab-btn");
-  const tabPanels = document.querySelectorAll(".tab-panel");
   const statValues = document.querySelectorAll(".stat-value[data-target]");
 
   function setHeaderScrolled() {
@@ -101,15 +99,16 @@
     });
   }
 
-  /* Tabs: Progress subsections */
-  function activateTab(name) {
-    tabButtons.forEach(function (btn) {
+  /* Tabs: each .subsection-tabs + adjacent .tab-panels is one group (Progress, Methods, etc.) */
+  function activateTabInGroup(tablist, panelsRoot, name) {
+    const buttons = tablist.querySelectorAll(".tab-btn");
+    const panelEls = panelsRoot.querySelectorAll(".tab-panel");
+    buttons.forEach(function (btn) {
       const active = btn.getAttribute("data-tab") === name;
       btn.classList.toggle("is-active", active);
       btn.setAttribute("aria-selected", String(active));
     });
-
-    tabPanels.forEach(function (panel) {
+    panelEls.forEach(function (panel) {
       const match = panel.getAttribute("data-panel") === name;
       panel.classList.toggle("is-visible", match);
       if (match) {
@@ -120,27 +119,32 @@
     });
   }
 
-  tabButtons.forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      const name = btn.getAttribute("data-tab");
-      if (name) activateTab(name);
+  document.querySelectorAll(".subsection-tabs").forEach(function (tablist) {
+    const panelsRoot = tablist.nextElementSibling;
+    if (!panelsRoot || !panelsRoot.classList.contains("tab-panels")) return;
+
+    tablist.querySelectorAll(".tab-btn").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        const name = btn.getAttribute("data-tab");
+        if (name) activateTabInGroup(tablist, panelsRoot, name);
+      });
     });
   });
 
-  /* Sync tab panels on load (script is at end of body; DOMContentLoaded may have fired). */
-  function syncTabsFromActiveButton() {
-    const activeBtn = document.querySelector(".subsection-tabs .tab-btn.is-active");
-    if (activeBtn && tabButtons.length && tabPanels.length) {
-      const initial = activeBtn.getAttribute("data-tab");
-      if (initial) activateTab(initial);
-    }
+  function initTabsFromHash() {
+    const raw = (location.hash || "").replace(/^#/, "");
+    if (!raw) return;
+    document.querySelectorAll(".subsection-tabs").forEach(function (tablist) {
+      const panelsRoot = tablist.nextElementSibling;
+      if (!panelsRoot || !panelsRoot.classList.contains("tab-panels")) return;
+      if (panelsRoot.querySelector('.tab-panel[data-panel="' + raw + '"]')) {
+        activateTabInGroup(tablist, panelsRoot, raw);
+      }
+    });
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", syncTabsFromActiveButton);
-  } else {
-    syncTabsFromActiveButton();
-  }
+  initTabsFromHash();
+  window.addEventListener("hashchange", initTabsFromHash);
 
   /* Intersection: panel lift on view */
   if ("IntersectionObserver" in window) {

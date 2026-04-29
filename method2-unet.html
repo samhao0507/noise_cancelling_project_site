@@ -3,71 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>U-Net · Noise Cancellation Final Project</title>
-  <link rel="stylesheet" href="css/fonts.css" />
-  <link rel="stylesheet" href="css/style.css" />
+  <meta http-equiv="refresh" content="0;url=method.html#unet" />
+  <title>Redirect · U-Net</title>
+  <script>location.replace("method.html#unet");</script>
 </head>
-<body data-nav-page="method2-unet">
-  <a class="skip-link" href="#main">Skip to content</a>
-
-  <header class="site-header" id="top">
-    <div class="header-inner">
-      <a href="index.html" class="brand brand-link">EECS 351: Intro to Digital Signal Processing</a>
-      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
-        <span class="nav-toggle-bar"></span>
-        <span class="nav-toggle-bar"></span>
-      </button>
-      <nav class="site-nav" id="site-nav" aria-label="Primary">
-        <ul class="nav-list">
-          <!-- <li><a href="introduction.html" data-nav="introduction">Intro</a></li> -->
-          <li><a href="data.html" data-nav="data">Data</a></li>
-          <li><a href="method1-basicfiltering.html" data-nav="method1-basicfiltering">Basic Filtering</a></li>
-	  <li><a href="method2-unet.html" data-nav="method2-unet"> U-Net </a></li>
-          <li><a href="result.html" data-nav="result">Result</a></li>
-          <li><a href="progress.html" data-nav="progress">Progress Report</a></li>
-          <li><a href="project_topic_finalized_317.html" data-nav="Project Topic Finalized"> Project Topic Finalized</a></li>
-        </ul>
-      </nav>
-    </div>
-    <div class="progress-track" aria-hidden="true">
-      <span class="progress-track-fill" id="scroll-progress"></span>
-    </div>
-  </header>
-
-  <main id="main" class="page-main">
-    <div class="content-wrap content-wrap--page">
-      <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href="index.html">Home</a>
-        <span class="breadcrumb-sep" aria-hidden="true">/</span>
-        <span>U-Net</span>
-      </nav>
-      <section class="panel">
-        <div class="panel-inner panel-inner--wide">
-          <!-- <span class="panel-index">03</span> -->
-          <h1 class="panel-title">U-Net</h1>
-		<p>After applying a simple filter to a few sample recordings, we started focusing on a deep learning approach that we hoped would yield better results. We used data from the online repo</p> 
-		<p>https://magenta.withgoogle.com/datasets/cocochorales</p> 
-		<p>that included audio files of instruments in an orchestra. We split these files into training and validation subsets. For a first noise source, we used data from the online repo</p> 
-		<p>https://depositonce.tu-berlin.de/items/aa9f01e1-3eb7-44f9-a5c8-fe1b4c858024</p> 
-		that included files of people chattering. Our goal was to filter out the sound of people chattering from the instrumental audio files. Before passing data through our deep learning algorithm, we had to do some preprocessing steps. The first step was to apply noise randomly to the instrumental audio files, and take the STFT (short-time Fourier transform) of both the clean instrumental files and the noised instrumental files. Here is an example of a clean instrumental STFT spectrogram.</p>
-        	<img src="EECS351_cleanSTFT_website.png", alt="clean STFT example", width="600", height="300">
-		<p>Here is a spectrogram of that same audio track with the people chattering noise applied.</p>
-		<img src="EECS351_noisySTFT_website.png", alt="noisy STFT example", width="600", height="300">
-		<p> These two spectrograms are noticeably different. For example, the noisy spectrogram has more magnitude in the 5000-8000 Hz range than the clean spectrogram.</p>
-		<p> The second preprocessing step we had to do was resampling. All of the files in our dataset (clean and noisy) were randomly cropped into five two-second segments and each resampled to 16,000 Hz. Before this step, there were 2,000 clean and noisy instrument recordings. This resampling created 10,000 audio files. 8,000 of these files were used for training and the remaining 2,000 were used for validation.</p>
-		<p> Now, our data was ready to be trained. The deep learning algorithm that we chose to implement was a U-Net, which essentially consists of two CNNs (convolutional neural networks) back-to-back that end up forming a ‘U’ shape. Our U-Net consisted of three encoder blocks, used to extract features. It also consisted of three decoder blocks, and a bottleneck block in between the two CNNs. A sketch of the structure is shown below.</p>
-		<img src="EECS351_Unet_sketch.jpg", alt="U-Net Sketch", width="400", height="800">
-		<p> For results and sample recordings of this approach, visit the "results" section of our website.</p>
-	</div>
-      </section>
-    </div>
-  </main>
-
-  <footer class="site-footer">
-    <p>EECS 351 Final Project: Noise Cancellation</p>
-    <button type="button" class="to-top" id="to-top" aria-label="Back to top">↑</button>
-  </footer>
-
-  <script src="js/main.js"></script>
+<body>
+  <p><a href="method.html#unet">Continue to Methods — U-Net</a></p>
 </body>
 </html>

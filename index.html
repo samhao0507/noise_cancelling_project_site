@@ -4,7 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Home · Noise Cancellation Final Project</title>
-  <link rel="stylesheet" href="css/fonts.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body data-nav-page="home">
@@ -21,11 +23,11 @@
         <ul class="nav-list">
           <!-- <li><a href="introduction.html" data-nav="introduction">Intro</a></li> -->
           <li><a href="data.html" data-nav="data">Data</a></li>
-          <li><a href="method1-basicfiltering.html" data-nav="method1:basicfiltering">Basic Filtering</a></li>
-	  <li><a href = "method2-unet.html" data-nav="method2:unet"> U-Net</a></li>
+          <li><a href="method.html" data-nav="method">Methods</a></li>
           <li><a href="result.html" data-nav="result">Result</a></li>
-          <li><a href="progress.html" data-nav="progress">Progress Report</a></li>
-          <li><a href="project_topic_finalized_317.html" data-nav="Project Topic Finalized"> Project Topic Finalized</a></li>
+          <li><a href="progress.html" data-nav="progress">Progress</a></li>
+	  <li><a href="project_topic_finalized_317.html" data-nav="Project Topic Finalized"> Project Topic Finalized</a></li>
+	  <li><a href="about_us.html" data-nav="About Us"> About Us </a></li>
         </ul>
       </nav>
     </div>
@@ -43,86 +45,76 @@
         <p class="hero-lead">Yin Siang Hao<br> Ronald Kreucher<br>Harry Lyu<br> Yi Rong<br></p>
       </div>
     </section>
-
+    <!-- <section class="panel">
+          <div class="panel-inner panel-inner--wide">
+            <span class="panel-index">01</span>
+            <h1 class="panel-title">Introduction</h1>
+            <p class="panel-lead">This website is created for presenting the outcomes of the final project of EECS 351: Intro to Digital Signal Processing class at University of Michigan by Group 11 - Yin Siang Hao, Ronald Kreucher, Harry Lyu, Yi Rong. </p>
+            <div class="panel-body">
+	<p>Inspired by multiple musical instruments and devices we hold at home, our project focuses on removing the ambient audio noise in audio recordings. We focus on cancelling the ambient noise, such as people-chatting, dog-barking, and air-conditioner noise, which are prevalent in musical recordings. 
+	At first, our group is planning on cancelling out the sound of people chattering from a dataset Sam found online. When our model cancels out that noise well, we will expand to those other noise sources above. 
+	We first tried out simple filtering on the recordings to see the effect. Later, we used multiple DSP techniques, including Analysis in a Different Basis, Frequency Domain Analysis (STFT), Sampling (Resampling). We used a CNN model to better restore the clean audio and this implements Image processing techniques. 
+	Our final task is to produce a system that can cancel out ambient noise and restore the cleanest recordings. 
+	And we used recordings made by ourselves to test the models and show the results. <\p>
+            </div>
+          </div>
+        </section> -->
     <section class="introduction">
       <div class="container">
-        <h2 class="section-title section-grid-heading">Introduction</h2>
-        <p class="section-subdescription">This website is created for presenting the outcomes of the final project of EECS 351: Intro to Digital Signal Processing class at University of Michigan by Group 11 - Yin Siang Hao, Ronald Kreucher, Harry Lyu, Yi Rong.</p>
-        <div class="section-text">
-          <p>We noticed that non-professional recordings of instrument ensembles often contain unpleasant ambient noises. Inspired by this struggle, we decided to build a system to automatically remove ambient noises from instrumental audio recordings, restoring the clean sound of bells, acoustic guitar, violin, and other instruments from recordings contaminated with real-world noise, such as people-chatting, dog-barking, and air-conditioner noise, which are prevalent in musical recordings.</p>
-          <p>We plan to tackle the noise of people chattering from a dataset Sam found online (<a href="https://depositonce.tu-berlin.de/items/aa9f01e1-3eb7-44f9-a5c8-fe1b4c858024" rel="noopener noreferrer">depositonce.tu-berlin.de</a>). Once our model performs well enough on denoising this noise type from instrumentals, we will expand to other noise sources in the dataset (autos, coffee machine, dishwasher, washing machine, microwave, background music, radio, vacuum cleaner, TV, other minor ambient noises).</p>
-          <p>We first tried out simple filtering on the recordings to see the denoising effect, later attempting the same noise by applying multiple DSP techniques, including Analysis in a Different Basis, Frequency Domain Analysis (STFT), Sampling (Resampling).</p>
-          <p>Finally, we’ll train a deep learning model, specifically a convolutional neural network (CNN), to denoise our noisy instrumental audios. We chose to use a simple 2-level U-Net denoiser based on convolutional neural network (CNN) models. This approach first converts each noisy recording into a spectrogram — a 2D picture of how sound energy is distributed across frequency and time — and trains a convolutional neural network (CNN) that learns to generate denoised-version spectrograms.</p>
-        </div>
+        <h2 class="section-title">Introduction</h2>
+        <p class = "section-subdescription">This website is created for presenting the outcomes of the final project of EECS 351: Intro to Digital Signal Processing class at University of Michigan by Group 11 - Yin Siang Hao, Ronald Kreucher, Harry Lyu, Yi Rong. </p>
+        <p class="section-text">
+Inspired by multiple musical instruments and devices we hold at home, our project focuses on removing the ambient audio noise in audio recordings. We focus on cancelling the ambient noise, such as people-chatting, dog-barking, and air-conditioner noise, which are prevalent in musical recordings. At first, our group is planning on cancelling out the sound of people chattering from a dataset Sam found online. When our model cancels out that noise well, we will expand to those other noise sources above. We first tried out simple filtering on the recordings to see the effect. Later, we used multiple DSP techniques, including Analysis in a Different Basis, Frequency Domain Analysis (STFT), Sampling (Resampling). We used a CNN model to better restore the clean audio and this implements Image processing techniques. Our final task is to produce a system that can cancel out ambient noise and restore the cleanest recordings. And we used recordings made by ourselves to test the models and show the results.        </p>
       </div>
     </section>
-
     <div class="content-wrap">
       <h2 class="section-grid-heading">Project sections</h2>
       <!-- <p class="section-grid-lead">Each card opens the full write-up for that part of the report.</p> -->
       <div class="section-grid" role="list">
+        <!-- <a href="introduction.html" class="section-card section-card--01" role="listitem">
+          <span class="section-card-index">01</span>
+          <span class="section-card-title">Introduction</span>
+          <span class="section-card-hint">Problem, motivation, goals</span>
+          <span class="section-card-arrow" aria-hidden="true">→</span>
+        </a> -->
         <a href="data.html" class="section-card section-card--02" role="listitem">
+          <!-- <span class="section-card-index">02</span> -->
           <span class="section-card-title">Data</span>
-          <span class="section-card-hint">Descriptions of the audio data that we are using</span>
+          <span class="section-card-hint">Sources, format, splits</span>
           <span class="section-card-arrow" aria-hidden="true">→</span>
         </a>
-        <a href="method1-basicfiltering.html" class="section-card section-card--03" role="listitem">
-          <span class="section-card-title">Method 1: Basic Filtering</span>
-          <span class="section-card-hint">Cancelling out noise by applying simple filters</span>
+        <a href="method.html" class="section-card section-card--03" role="listitem">
+          <!-- <span class="section-card-index">03</span> -->
+          <span class="section-card-title">Methods</span>
+          <span class="section-card-hint">Basic filtering and U-Net</span>
           <span class="section-card-arrow" aria-hidden="true">→</span>
         </a>
-	<a href="method2-unet.html" class="section-card section-card--04" role="listitem">
-          <span class="section-card-title">Method 2: U-Net</span>
-          <span class="section-card-hint">Cancelling oout noise with a U-Net deep learning alogorithm</span>
-          <span class="section-card-arrow" aria-hidden="true">→</span>
-        </a>
-        <a href="result.html" class="section-card section-card--05" role="listitem">
+        <a href="result.html" class="section-card section-card--04" role="listitem">
+          <!-- <span class="section-card-index">04</span> -->
           <span class="section-card-title">Result</span>
-          <span class="section-card-hint">How the two methods performed in audio cancellation</span>
-        </a>          <span class="section-card-arrow" aria-hidden="true">→</span>
-      </div>
-    </div>
-
-     <div class="content-wrap">
-      <h2 class="section-grid-heading">Project Checkpoints</h2>
-      <!-- <p class="section-grid-lead">Each card opens the full write-up for that part of the report.</p> -->
-      <div class="section-grid" role="list">
-	 <a href="progress.html" class="section-card section-card--06" role="listitem">
-          <span class="section-card-title">Progress Report (3/29)</span>
-          <span class="section-card-hint">Providing Answers & Updates to Deliverables in Progress Report Assignement</span>
+          <span class="section-card-hint">Metrics, plots, listening tests</span>
           <span class="section-card-arrow" aria-hidden="true">→</span>
         </a>
-        <a href="project_topic_finalized_317.html" class="section-card section-card--07" role="listitem">
+	<a href="about_us.html" class="section-card section-card--05" role="listitem">
+          <!-- <span class="section-card-index">04</span> -->
+          <span class="section-card-title">About Us</span>
+          <span class="section-card-hint">Get to Know our Group</span>
+          <span class="section-card-arrow" aria-hidden="true">→</span>
+        </a>
+        <a href="progress.html" class="section-card section-card--06 section-card--wide" role="listitem">
+          <!-- <span class="section-card-index">05</span> -->
+          <span class="section-card-title">Progress</span>
+          <span class="section-card-hint">Progress Report</span>
+          <span class="section-card-arrow" aria-hidden="true">→</span>
+        </a>
+	<a href="project_topic_finalized_317.html" class="section-card section-card--07 section-card--wide" role="listitem">
+          <!-- <span class="section-card-index">06</span> -->
           <span class="section-card-title">Project Topic Finalized (3/22)</span>
           <span class="section-card-hint">Addressing tasks in Project Topic Finalized Deliverable</span>
           <span class="section-card-arrow" aria-hidden="true">→</span>
         </a>
-       </div>
       </div>
-
-    <section class="about-us" aria-labelledby="about-us-title">
-      <div class="container">
-        <h2 id="about-us-title" class="section-title section-grid-heading">About us</h2>
-        <div class="about-us-grid">
-          <article class="about-us-card">
-            <h3 class="about-us-name">Ronald Kreucher</h3>
-            <p class="about-us-bio">Ronald Kreucher is a junior majoring in Computer Engineering from Ann Arbor, MI. He is primarily interested in data structures &amp; algorithms, and signal processing. Contact: <a href="mailto:ronaldjk@umich.edu">ronaldjk@umich.edu</a></p>
-          </article>
-          <article class="about-us-card">
-            <h3 class="about-us-name">Yi Rong</h3>
-            <p class="about-us-bio">Yi Rong is a sophomore majoring in Computer Engineering from China. She is interested in embedded systems and signal processing. Contact: <a href="mailto:yoyorong@umich.edu">yoyorong@umich.edu</a></p>
-          </article>
-          <article class="about-us-card">
-            <h3 class="about-us-name">Yin-Siang Hao</h3>
-            <p class="about-us-bio">Yin-Siang Hao is a junior majoring in Computer Engineering from Taiwan. He is mainly interested in computer architecture, machine learning, and compiler design. Contact: <a href="mailto:samhao@umich.edu">samhao@umich.edu</a></p>
-          </article>
-          <article class="about-us-card">
-            <h3 class="about-us-name">Harry Lyu</h3>
-            <p class="about-us-bio">Harry Lyu is a junior majoring in Electrical Engineering from China. He is interested in signal, image processing, computer vision, and machine learning. Contact: <a href="mailto:harrylyu@umich.edu">harrylyu@umich.edu</a></p>
-          </article>
-        </div>
-      </div>
-    </section>
+    </div>
   </main>
 
   <footer class="site-footer">

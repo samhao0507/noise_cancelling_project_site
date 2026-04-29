@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Method · Noise Cancellation Final Project</title>
-  <link rel="stylesheet" href="css/fonts.css" />
+  <title>Methods · Noise Cancellation Final Project</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body data-nav-page="method">
@@ -19,9 +21,8 @@
       </button>
       <nav class="site-nav" id="site-nav" aria-label="Primary">
         <ul class="nav-list">
-          <!-- <li><a href="introduction.html" data-nav="introduction">Intro</a></li> -->
           <li><a href="data.html" data-nav="data">Data</a></li>
-          <li><a href="method.html" data-nav="method">Method</a></li>
+          <li><a href="method.html" data-nav="method">Methods</a></li>
           <li><a href="result.html" data-nav="result">Result</a></li>
           <li><a href="progress.html" data-nav="progress">Progress</a></li>
           <li><a href="project_topic_finalized_317.html" data-nav="Project Topic Finalized"> Project Topic Finalized</a></li>
@@ -38,20 +39,130 @@
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="index.html">Home</a>
         <span class="breadcrumb-sep" aria-hidden="true">/</span>
-        <span>Method</span>
+        <span>Methods</span>
       </nav>
-      <section class="panel">
+      <section class="panel panel--progress">
         <div class="panel-inner panel-inner--wide">
-          <!-- <span class="panel-index">03</span> -->
-          <h1 class="panel-title">Method</h1>
-          <p class="panel-lead">Outline your pipeline: feature extraction, models, adaptive filters, or learning-based approaches.</p>
-          <div class="panel-body">
-            <p>Walk through the algorithm or architecture step by step. A numbered list or simple diagram often reads well here.</p>
-            <ol class="step-list">
-              <li>Step one of your processing chain.</li>
-              <li>Step two—parameters and design choices.</li>
-              <li>Step three—how you evaluate quality.</li>
-            </ol>
+          <h1 class="panel-title">Methods</h1>
+          <p class="panel-lead">Traditional filtering baseline and U-Net spectrogram denoising.</p>
+          <div class="subsection-tabs" role="tablist" aria-label="Method subsections">
+            <button type="button" class="tab-btn is-active" role="tab" id="tab-basic" aria-selected="true" aria-controls="panel-basic" data-tab="basic">Basic filtering</button>
+            <button type="button" class="tab-btn" role="tab" id="tab-unet" aria-selected="false" aria-controls="panel-unet" data-tab="unet">U-Net</button>
+          </div>
+
+          <div class="tab-panels">
+            <div class="tab-panel is-visible" role="tabpanel" id="panel-basic" aria-labelledby="tab-basic" data-panel="basic">
+              <h2 class="sr-only">Basic filtering</h2>
+              <div class="panel-body">
+                <p>
+                  As a traditional baseline, we implemented a multi-stage audio denoising pipeline
+                  using standard digital signal processing techniques before comparing against the
+                  CNN-based approach.
+                </p>
+                <p>
+                  The goal of this method is to reduce unwanted background noise in a more
+                  interpretable way and provide a meaningful reference point for evaluating
+                  how much improvement the learning-based model gives.
+                </p>
+
+                <ol class="step-list">
+                  <li>
+                    <strong>DC removal.</strong> We first subtract the mean of the signal to remove
+                    DC offset. This prevents an artificial spike near 0 Hz in the frequency
+                    spectrum and makes later filtering more stable.
+                  </li>
+                  <li>
+                    <strong>Band-pass filtering.</strong> We then apply a 4th-order Butterworth
+                    band-pass filter from <strong>80 Hz to 3800 Hz</strong>. This keeps most of the
+                    main speech-related frequency range while suppressing low-frequency rumble
+                    and high-frequency noise.
+                  </li>
+                  <li>
+                    <strong>Notch filtering.</strong> If needed, we also apply narrow band-stop
+                    filters centered at <strong>60 Hz</strong> and <strong>120 Hz</strong> to reduce
+                    electrical hum and its harmonic.
+                  </li>
+                  <li>
+                    <strong>Wavelet denoising.</strong> After filtering, we apply wavelet denoising
+                    using the <strong>sym4</strong> wavelet with decomposition level
+                    <strong>5</strong>. This step suppresses smaller noisy components while preserving
+                    more structure than simple smoothing.
+                  </li>
+                  <li>
+                    <strong>Soft adaptive attenuation.</strong> Finally, the signal is divided into
+                    short overlapping frames, and lower-energy frames are attenuated more strongly
+                    than higher-energy frames. This helps reduce weaker background mumbling or
+                    residual noise in quieter regions without the abrupt effect of a hard gate.
+                  </li>
+                </ol>
+                <div class="introduction_graph">
+                  <figure style="margin-top: 2rem;">
+                    <img src="basic_filtering_pipeline_diagram.png" alt="Basic filtering pipeline diagram" style="width:100%; max-width:1100px; height:auto;">
+                    <figcaption>Step-by-step overview of the traditional basic filtering pipeline.</figcaption>
+                  </figure>
+                </div>
+                <p>
+                  We chose this pipeline because it is more substantial than a single high-pass
+                  filter, but still fully traditional and easier to interpret than a deep
+                  learning model.
+                </p>
+
+                <p>
+                  In particular, the <strong>80–3800 Hz</strong> band-pass range is intended to
+                  preserve the most important part of the speech-related frequency band while
+                  reducing obvious low-frequency rumble and high-frequency interference.
+                  The optional notch filters are included to handle common recording hum,
+                  while wavelet denoising serves as a middle ground between simple filtering
+                  and more advanced time-frequency denoising methods.
+                </p>
+
+                <p>
+                  To evaluate this baseline, we compare the noisy and denoised outputs in both
+                  the time domain and the frequency domain. In the time domain, waveform plots
+                  show the overall change in signal amplitude and structure. In the frequency
+                  domain, FFT plots show that the noisy signal generally has larger magnitude
+                  than the filtered signal across many frequencies, indicating suppression of
+                  excess frequency content after denoising.
+                </p>
+
+                <div class="comparison-graphs">
+                  <figure>
+                    <img src="basic_filter_time.png" alt="Waveform comparison between noisy and denoised audio" style="width:100%; max-width:800px; height:auto;">
+                    <figcaption>Time-domain waveform comparison of the noisy and denoised signals.</figcaption>
+                  </figure>
+
+                  <figure style="margin-top: 2rem;">
+                    <img src="basic_filter_freq.png" alt="FFT comparison between noisy and denoised audio" style="width:100%; max-width:800px; height:auto;">
+                    <figcaption>Frequency-domain FFT comparison showing reduced magnitude after filtering.</figcaption>
+                  </figure>
+                </div>
+                <p>
+                  This basic filtering pipeline serves as our traditional baseline, and later
+                  its performance can be compared directly against the CNN-based denoiser to
+                  see how much improvement is gained from the learning-based method.
+                </p>
+              </div>
+            </div>
+
+            <div class="tab-panel" role="tabpanel" id="panel-unet" aria-labelledby="tab-unet" hidden data-panel="unet">
+              <h2 class="sr-only">U-Net</h2>
+              <div class="panel-body">
+                <p>After applying a simple filter to a few sample recordings, we started focusing on a deep learning approach that we hoped would yield better results. We used data from the online repo</p>
+                <p>https://magenta.withgoogle.com/datasets/cocochorales</p>
+                <p>that included audio files of instruments in an orchestra. We split these files into training and validation subsets. For a first noise source, we used data from the online repo</p>
+                <p><a href="https://depositonce.tu-berlin.de/items/aa9f01e1-3eb7-44f9-a5c8-fe1b4c858024" rel="noopener noreferrer">https://depositonce.tu-berlin.de/items/aa9f01e1-3eb7-44f9-a5c8-fe1b4c858024</a> that included files of people chattering. Our goal was to filter out the sound of people chattering from the instrumental audio files. Before passing data through our deep learning algorithm, we had to do some preprocessing steps. The first step was to apply noise randomly to the instrumental audio files, and take the STFT (short-time Fourier transform) of both the clean instrumental files and the noised instrumental files. Here is an example of a clean instrumental STFT spectrogram.</p>
+                <img src="EECS351_cleanSTFT_website.png" alt="clean STFT example" width="600" height="300">
+                <p>Here is a spectrogram of that same audio track with the people chattering noise applied.</p>
+                <img src="EECS351_noisySTFT_website.png" alt="noisy STFT example" width="600" height="300">
+                <p>These two spectrograms are noticeably different. For example, the noisy spectrogram has more magnitude in the 5000–8000 Hz range than the clean spectrogram.</p>
+                <p>We apply STFT to all audio segments using a Hann window of length 512, an FFT size of 512, and a hop length of 128 samples, along with Hann windows that smoothes out the window boundaries, converting each 2-second, 16&nbsp;kHz waveform into a 2D magnitude spectrogram of 257 frequency bins &times; 250 time frames. Instead of training the model to generate a denoised spectrogram, we instead train for a model that generates a ratio mask that suppresses the magnitude of the noise frequencies at every time frame. Since most parts of the clean and noisy spectrogram are identical in terms of magnitudes and only a small fraction of magnitudes has to be suppressed harshly (noise frequencies), we choose to have the model predict the ratio instead of the literal magnitudes to yield better training outcomes.</p>
+                <p>Concretely, the training target for each spectrogram bin is the Ideal Ratio Mask (IRM), defined as |clean|/|noisy| and clamped to [0, 1]. The input fed to the model is the log-magnitude of the noisy spectrogram, log1p(|noisy|), reshaped to [B, 1, 257, 250].</p>
+                <p>The UNet encoder downsamples the spectrogram through three levels, expanding the channel depth from 1&rarr;32&rarr;64&rarr;128 via 3&times;3 ConvBlocks (each consisting of two Conv2d-BatchNorm-ReLU pairs) interleaved with 2&times;2 max pooling. A bottleneck block then projects from 128 to 256 channels of images that have 1/8th the original spatial resolution, as a summary extraction of spectrogram features. The decoder contains three symmetric levels. In each level, we first upsample the feature maps, and then at each level concatenate the feature maps channel-wise with the encoder output of the same level, eventually doing another convblock that shrinks the channel number by half. A final convolution projects the 32-channel feature map back to a single-channel output of a 257&times;250 denoised spectrogram.</p>
+                <p>The model is trained with energy-weighted binary cross-entropy loss (BCEWithLogitsLoss) computed for each element, multiplied by its spectrogram magnitude and summed into a weighted mean loss. This makes high-energy frequency bins, which contribute more to the audio and are more prominent to human ears, to drive proportionally more gradient. We use the Adam optimizer with a learning rate of 1e-3 and weight decay of 1e-5, paired with a ReduceLROnPlateau scheduler that downsizes the learning rate when the loss reduction is stagnant.</p>
+                <img src="EECS351_Unet_sketch.jpg" alt="Hand-drawn U-Net architecture diagram" class="unet-sketch-img" loading="lazy">
+                <p>For results and sample recordings of this approach, visit the results section of our website.</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
