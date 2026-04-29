@@ -21,12 +21,12 @@
       </button>
       <nav class="site-nav" id="site-nav" aria-label="Primary">
         <ul class="nav-list">
-          <li><a href="introduction.html" data-nav="intro">Intro</a></li>
           <li><a href="data.html" data-nav="data">Data</a></li>
           <li><a href="method.html" data-nav="method">Methods</a></li>
           <li><a href="result.html" data-nav="result">Result</a></li>
-          <li><a href="progress.html" data-nav="progress">Progress</a></li>
-          <li><a href="project_topic_finalized_317.html" data-nav="Project Topic Finalized"> Project Topic Finalized</a></li>
+          <li><a href="progress.html" data-nav="progress">Progress Report</a></li>
+          <li><a href="project_topic_finalized_317.html" data-nav="project-topic">Project Topic Finalized</a></li>
+          <li><a href="about_us.html" data-nav="about-us">About Us</a></li>
         </ul>
       </nav>
     </div>
@@ -46,10 +46,10 @@
         <div class="panel-inner panel-inner--wide">
           <!-- <span class="panel-index">01</span> -->
           <h1 class="panel-title">Introduction</h1>
-          <p class="panel-lead">Describe the problem, motivation, and goals of your project in a few clear sentences.</p>
+          <p class="panel-lead">Instrumental recordings often pick up background sounds that are hard to remove without damaging the music.</p>
           <div class="panel-body">
-            <p>Replace this paragraph with your project overview: what noise or signal problem you address, why it matters, and what success looks like for your team.</p>
-            <p>You can add equations, diagrams, or links to papers as you refine the page—this layout stays readable on phones and desktops.</p>
+            <p>Instrumental recordings often pick up background sounds that are hard to remove without damaging the music. In this project we focus on a concrete case: separating people chattering from instrumental tracks. Our goal is to recover a cleaner version of the instrumental and to compare a traditional filtering approach to a learning-based model so we can see which method performs better on denoising.</p>
+            <p>During the process, we used multiple DSP techniques, including various filtering methods (bandpass and notch filtering), analysis on a different basis, STFT (frequency domain analysis), and resampling (sampling). On the Methods page we document two paths. First, a multi-stage basic filtering baseline (DC removal, band-pass and optional notch filtering, wavelet denoising, and soft frame-wise attenuation) that stays interpretable and gives a reference for comparison. Second, a U-Net trained on STFT magnitude inputs: the network predicts an ideal ratio mask between clean and noisy magnitudes so it can suppress noise-dominated time-frequency bins. The Data section summarizes sources and preprocessing; Results shows listening examples and spectrum-level comparisons for both the filter and the U-Net.</p>
           </div>
         </div>
       </section>
