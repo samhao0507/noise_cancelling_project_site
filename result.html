@@ -82,16 +82,16 @@
                 <source src="result_audio/filtered_string_track002025_mixed.wav" type="audio/wav">
                 Your browser does not support the audio element.
               </audio>
+              <p>We compared both denoised version against the noisy string2025 audio files. And here are the results.</p>
+              <img src="images/fft_noisy_vs_denoised_string_track002025_mixed.png" alt="Results: 1FFT string2025" class="results-1-string-unet" width="400" height="300">
+              <img src="images/fft_noisy_vs_filtered_string_track002025_mixed.png" alt="Results: 1FFT string2025" class="results-1-string-unet" width="400" height="300">
+              <br><p>The comparisons show that for U-Net denoising, it kept more frequencies and denoised mostly the low frequencies, which corresponds to our people chattering noise.
+                For the filtered version, the effect was not profound as observed from the specturm. Also, some filtered spikes even surpassed the old noisy spikes.
+              </p>
 
-              <p>The FFT plot below compares the U-Net output and the filtered output for this same clip. This helps visualize how the traditional filtering pipeline and the learned model suppress frequency content differently.</p>
-              <figure style="margin-top: 1rem;">
-                <img src="fft_comparison_outputs/fft_full_string_track002025_mixed.png" alt="FFT comparison for string_track002025 mixed audio" style="width:100%; max-width:850px; height:auto;">
-                <figcaption>FFT comparison between the U-Net result and the basic filtering result for string_track002025.</figcaption>
-              </figure>
+              <p>We were also insterested on how our models would perform on self-recorded clips, like this clip of a Chinese Guzheng. Here is an audio file of the Guzheng and people talking in the background.</p>
 
-              <p>Overall, the U-Net performed really well as it eliminated the chattering noise almost entirely. We were also insterested on how our models would perform on self-recorded clips, like this clip of a Chinese Guzheng. Here is a audio file of the Guzheng and people talking in the background.</p>
-
-              <h4>Guzheng1_new (noisy)</h4>
+              <h4>Guzheng1 (noisy)</h4>
               <audio controls>
                 <source src="result_audio/Guzheng1_new.wav" type="audio/wav">
                 Your browser does not support the audio element.
@@ -111,17 +111,17 @@
                 Your browser does not support the audio element.
               </audio>
 
-              <p>The FFT comparison below shows the difference between the filtered result and the U-Net result on this self-recorded Guzheng clip.</p>
-              <figure style="margin-top: 1rem;">
-                <img src="fft_comparison_outputs/fft_full_Guzheng1.png" alt="FFT comparison for Guzheng1 audio" style="width:100%; max-width:850px; height:auto;">
-                <figcaption>FFT comparison between the U-Net result and the basic filtering result for Guzheng1.</figcaption>
-              </figure>
+              <p>For self recorded clips, we also compared both denoised versions against the noisy Guzheng1 audio files</p>
+              <img src="images/fft_noisy_vs_denoised_Guzheng1_new.png" alt="Results: 1FFT Guzheng1" class="results-1-Guzheng" width="400" height="300">
+              <img src="images/fft_noisy_vs_filtered_Guzheng1_new.png" alt="Results: 1FFT Guzheng1" class="results-1-Guzheng" width="400" height="300">
+              <br><p>The comparison here shows similar results as string2025. The U-Net version did better in attenuating spikes in the lower frequencies. The filtered version still has spikes surpassed the old noisy spikes.</p>
             </div>
           </div>
 
           <div class="content-wrap">
             <h2 class="section-grid-heading">Noise #2: Air Conditioning</h2>
-            <p>The next audio source we tackled was air conditioning. We'll start by presenting the results of an audio recording in the instrumental music validation set above.</p>
+            <p>The next audio source we tackled was air conditioning. Since we couldn't find the exact air conditioning noise, here we used the auto noise to generate our training dataset. 
+              We'll start by presenting the results of an audio recording in the instrumental music validation set above.</p>
 
             <h4>string_track002011 (clean)</h4>
             <audio controls>
@@ -148,11 +148,13 @@
               Your browser does not support the audio element.
             </audio>
 
-            <p>The FFT plot below compares the filtered result and the U-Net result for the same AC-noised audio segment.</p>
-            <figure style="margin-top: 1rem;">
-              <img src="fft_comparison_outputs/fft_full_string_track002011_mixed_AC.png" alt="FFT comparison for string_track002011 mixed AC audio" style="width:100%; max-width:850px; height:auto;">
-              <figcaption>FFT comparison between the U-Net result and the basic filtering result for the AC-noised validation clip.</figcaption>
-            </figure>
+            <p>We compared both denoised version against the noisy string2011 with auto audio files. And here are the results.</p>
+              <img src="images/fft_noisy_vs_denoised_string_track002011_mixed_AC.png alt="Results: 2FFT string2011" class="results-2-string-unet" width="400" height="300">
+              <img src="images/fft_noisy_vs_filtered_string_track002011_mixed_AC.png" alt="Results: 2FFT string2011" class="results-2-string-unet" width="400" height="300">
+              <br><p>The comparisons show that for U-Net denoising, it did not take out all its DC component. It attenuated the DC component and the spikes around 1200 Hz while keeping most of the high frequencies unchanged.
+                For the filtering version, the DC component was taken out completely. Also, it did not attenuated the 1000 Hz to 2000 Hz range. <br>
+                The U-Net works better than the filtered version. 
+              </p>
 
             <p>Like the last section, we also tested our models with self-recorded clips. This time, it was a clip of Ronald playing a bellset with air conditioning in the background.</p>
 
@@ -180,12 +182,11 @@
               </audio>
             </div>
 
-            <p>The FFT comparison below helps compare how the traditional filter pipeline and the U-Net denoiser shape the frequency content of the same bellset recording.</p>
-            <figure style="margin-top: 1rem;">
-              <img src="fft_comparison_outputs/fft_full_EECS351_bells4.png" alt="FFT comparison for EECS351 bells4 audio" style="width:100%; max-width:850px; height:auto;">
-              <figcaption>FFT comparison between the U-Net result and the basic filtering result for the bellset + AC clip.</figcaption>
-            </figure>
-
+            <<p>We compared both denoised version against the noisy bells audio files. And here are the results.</p>
+              <img src="images/fft_noisy_vs_denoised_EECS351_bells4.png" alt="Results: 1FFT U-Net string2025" class="results-1-string-unet" width="400" height="300">
+              <img src="images/fft_noisy_vs_filtered_EECS351_bells4.png" alt="Results: 1FFT U-Net" class="results-1-string-unet" width="400" height="300">
+              <br><p> For the U-Net version, it attenuated most of the higher frequency peaks and some low 40 Hz frequency peaks. For the filtered version, it also denoised the higher frequencies but increased the lower frequency peaks.
+              </p>
             <p>In the U-Net denoised clip, the air conditioning noise is much quieter, however the sound of the mallets hitting the keys is not as "sharp" as the original clip. We can hear some echo. </p>
           </div>
 
@@ -218,19 +219,21 @@
               Your browser does not support the audio element.
             </audio>
 
-            <p>The FFT figure below compares the filtered output and the U-Net output for the two-noise case. This gives a direct visual comparison of how well each method suppresses the combined interference.</p>
-            <figure style="margin-top: 1rem;">
-              <img src="fft_comparison_outputs/fft_full_string_track002011_mixed_recordall.png" alt="FFT comparison for string_track002011 mixed with all noises" style="width:100%; max-width:850px; height:auto;">
-              <figcaption>FFT comparison between the U-Net result and the basic filtering result for the clip with people chattering and air conditioning.</figcaption>
-            </figure>
+            <p>We compared both denoised version against the noisy string2011 audio files. And here are the results.</p>
+              <img src="images/fft_noisy_vs_denoised_string_track002011_mixed_recordall.png" alt="Results: 1FFT U-Net string2025" class="results-1-string-unet" width="400" height="300">
+              <img src="images/fft_noisy_vs_filtered_string_track002011_mixed_recordall.png" alt="Results: 1FFT U-Net" class="results-1-string-unet" width="400" height="300">
+              <br><p>The outputting effect is similar for the filtered version and U-Net version. The only difference is that U-Net did not eliminate the DC component from the FFT perspective.
+              </p>
 
-            <p>The U-Net performed pretty well at elimiating both noises. We can hear some people chattering at the beginning, but nothing too significant. We also tested the removal of these two noises with the Guzheng. (come back)</p>
+            <p>As for listening to the audios, the U-Net performed pretty well at elimiating both noises. We can hear some people chattering at the beginning, but nothing too significant. We also tested the removal of these two noises with the Guzheng. (come back)</p>
           </div>
 
           <div class="content-wrap">
             <h2 class="section-grid-heading">Noise #4: People Reading</h2>
-            <p>The last noise source we explored was of someone reading in the background. Could this be different than people chattering? We'll start with a recording from the validation set, and then move into a self-recorded example.</p>
-
+            <p>The last noise source we explored was of someone reading in the background. This noise is recorded by ourselves (Yi speaking in the background). Could this be different from the people chattering dataset found online? We'll start with a recording from the validation set, and then move into a self-recorded example.</p>
+            <p>(Something to be noted here: Since we have limited time, we didn't record many people speaking audio files. 
+              Therefore, for the training dataset and validation dataset, we put some online people chattering noise dataset. )
+            </p>
 	    <h4>string_track002018 (clean)</h4>
 	    <audio controls>
 	       <source src="result_audio/string_track002018.wav" type="audio/wav">
@@ -248,6 +251,9 @@
 	      <source src="result_audio/string002018_ckpRECORDALL.wav", type="audio/wav">
 	      Your browser does not support the audio element.
 	    </audio>
+      <p>We compared both denoised version against the noisy string2018 audio files. And here are the results.</p>
+              <img src="images/fft_noisy_vs_denoised_string_track002018_mixed_recodall.png" alt="Results: 1FFT U-Net string2025" class="results-1-string-unet" width="400" height="300">
+              <img src="images/fft_noisy_vs_filtered_string_track002018_mixed_recodall.png" alt="Results: 1FFT U-Net" class="results-1-string-unet" width="400" height="300">
 	    <p> To explore the real world case, here is a self-recording of a reader and a piano player.</p>
             <h4>piano_people (piano with reader)</h4>
             <audio controls>
@@ -268,19 +274,23 @@
               Your browser does not support the audio element.
             </audio>
 
-            <p>The FFT figure below compares the filtered result and the U-Net result on this recording, giving a direct frequency-domain comparison between the two denoising approaches.</p>
-            <figure style="margin-top: 1rem;">
-              <img src="fft_comparison_outputs/fft_full_piano_people.png" alt="FFT comparison for piano people audio" style="width:100%; max-width:850px; height:auto;">
-              <figcaption>FFT comparison between the U-Net result and the basic filtering result for the piano + reading clip.</figcaption>
-            </figure>
+            <p>We compared both denoised version against the noisy piano audio files. And here are the results.</p>
+              <img src="images/fft_noisy_vs_denoised_piano_people.png" alt="Results: 1FFT U-Net string2025" class="results-1-string-unet" width="400" height="300">
+              <img src="images/fft_noisy_vs_filtered_piano_people.png" alt="Results: 1FFT U-Net" class="results-1-string-unet" width="400" height="300">
+              <br><p>As from the specturm viewpoint, the U-Net version kepted the DC component and higher frequencies and attenuated the lower frequencies parts. The filter version muted the DC component but left much of the lower frequencies untouched.
+              </p>
+            <p>Add some qualitative comparison here.</p>
+            
           </div>
 
         </div>
 
 	<div class="content-wrap">
 	 <h2 class="section-grid-heading">Key Takeaways</h2>
-           <p>Our group learned a lot from this project, and from the results in this section. One of the main trends in our results is that denoising using the U-Net algorithm is more effective than using basic filtering. For most of the clips in our validation set, U-Net did an admirable job, removing most of the desired noise. However, in some of the self-recorded clips (like in subsection 2 with Bells & AC), U-Net did not do as well.</p>
-	      Some ideas our group has is that the noise sources used during training is not the same as noise sources in 'real life', taking place in the self-recordings. It also could be possible that our training clips were too similar to each other, making our U-Net less effective in the general case. However, we are still happy with the results.</p>
+           <p>Our group learned a lot from this project, and from the results in this section. One of the main trends in our results is that denoising using the U-Net algorithm is more effective than using basic filtering. For most of the clips in our validation set, U-Net did an admirable job, removing most of the desired noise. However, in some of the self-recorded clips (like in subsection 2 with Bells & AC), U-Net did not do as well.
+             And that's why we explored Noise #4 to see if real recorded noise work better on real world dataset.</p>
+	      <p>Some ideas our group has is that U-Net method works well with the noises that it used to train. For those that didn't work well, the noise sources used during training is not the same as noise sources in 'real life', taking place in the self-recordings. It also could be possible that our training clips were too similar to each other, making our U-Net less effective in the general case. 
+          For future exploration, more general noises can be added to the training set to make the model more generalized. However, we are still happy with the results.</p>
 	</div>
 	
       </section>
