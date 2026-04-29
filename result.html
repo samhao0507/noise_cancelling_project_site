@@ -254,10 +254,18 @@
 	      <source src="result_audio/string002018_ckpRECORDALL.wav", type="audio/wav">
 	      Your browser does not support the audio element.
 	    </audio>
+	    <h4> filterd_string_002018_recordall (filtered)</h4>
+	    <audio controls>
+	      <source src="result_audio/filtered_string_track002018_mixed_recodall.wav", type="audio/wav">
+	      Your browser does not support the audio element.
+            </audio>
+
       <p>We compared both denoised version against the noisy string2018 audio files. And here are the results.</p>
               <img src="images/fft_noisy_vs_denoised_string_track002018_mixed_recodall.png" alt="Results: 1FFT U-Net string2025" class="results-1-string-unet" width="400" height="300">
               <img src="images/fft_noisy_vs_filtered_string_track002018_mixed_recodall.png" alt="Results: 1FFT U-Net" class="results-1-string-unet" width="400" height="300">
-	    <p> We see similar patterns in the FFT comparisons in this subsection that we do in other subsections. The filtered plot completely attenuates the DC component, while the U-Net keeps it to a lower extent. Also some of the frequencies in the 2000-4000 Hz range were attenuated more in the filtered plot than the U-Net plot. To explore the real world case, here is a self-recording of a reader and a piano player.</p>
+	    <p> We see similar patterns in the FFT comparisons in this subsection that we do in other subsections. The filtered plot completely attenuates the DC component, while the U-Net keeps it to a lower extent. Also some of the frequencies in the 2000-4000 Hz range were attenuated more in the filtered plot than the U-Net plot.</p>
+	    <p> To the listener, the U-Net performs well at eliminating the speaker noise. The filtered model does okay, as the speaker is noticably quieter and the instrumentals are more or less intact. We do however still hear some 'static' sounds.</p>
+            <p>To explore the real world case, here is a self-recording of a reader and a piano player.</p>
             <h4>piano_people (piano with reader)</h4>
             <audio controls>
               <source src="result_audio/piano_people.wav" type="audio/wav">
